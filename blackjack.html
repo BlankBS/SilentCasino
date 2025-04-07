@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack - SilentCasino</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="index.html"><h1>SilentCasino</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="game-layout">
+            <div class="game-area">
+                <div class="dealer-hand">
+                    <h3>Dealer's Hand <span id="dealer-score">?</span></h3>
+                    <div class="cards-container" id="dealer-cards"></div>
+                </div>
+
+                <div class="player-hand">
+                    <h3>Your Hand <span id="player-score">0</span></h3>
+                    <div class="cards-container" id="player-cards"></div>
+                </div>
+
+                <div class="controls">
+                    <button id="hit">Hit</button>
+                    <button id="stand">Stand</button>
+                    <button id="double">Double</button>
+                </div>
+            </div>
+
+            <div class="betting-panel">
+                <div class="balance">
+                    <span>Balance</span>
+                    <span id="balance">1000</span>
+                </div>
+
+                <div class="betting-area">
+                    <input type="number" id="bet-amount" placeholder="Enter bet amount" min="1">
+                    <div class="quick-bets">
+                        <button class="quick-bet" data-amount="10">10</button>
+                        <button class="quick-bet" data-amount="100">100</button>
+                        <button class="quick-bet" data-amount="1000">1000</button>
+                    </div>
+                    <button id="place-bet">Place Bet</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SilentCasino</h3>
+                <p>Your premium gaming destination</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="games.html">Games</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Casino Street, Las Vegas</li>
+                    <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                    <li><i class="fas fa-envelope"></i> info@silentcasino.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SilentCasino. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/blackjack.js"></script>
+</body>
+</html> 

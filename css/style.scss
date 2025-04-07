@@ -1,0 +1,906 @@
+@use "sass:color";
+
+// Variables
+$primary-color: #0a0a0a;
+$secondary-color: #1a1a1a;
+$accent-color: #9d00ff;
+$neon-purple: #ff00ff;
+$neon-green: #00ff00;
+$neon-blue: #00ffff;
+$text-color: #ffffff;
+$text-secondary: #cccccc;
+$font-family: 'Arial', sans-serif;
+
+// Mixins
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin transition {
+    transition: all 0.3s ease;
+}
+
+@mixin neon-glow {
+    text-shadow: 0 0 3px $neon-purple,
+                 0 0 5px $neon-purple;
+}
+
+// Reset and Base Styles
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family;
+    background-color: $primary-color;
+    color: $text-color;
+    line-height: 1.6;
+}
+
+// Header Styles
+.header {
+    background-color: $secondary-color;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid $accent-color;
+}
+
+.nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    a {
+        text-decoration: none;
+        @include transition;
+
+        &:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 0 10px $neon-purple,
+                        0 0 20px $neon-purple;
+        }
+    }
+
+    h1 {
+        color: $neon-purple;
+        font-size: 2rem;
+        @include neon-glow;
+    }
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+
+    a {
+        color: $text-color;
+        text-decoration: none;
+        @include transition;
+        padding: 0.5rem 1.5rem;
+        border-radius: 25px;
+        border: 1px solid rgba($neon-purple, 0.3);
+        background: rgba($primary-color, 0.2);
+        box-shadow: 0 0 10px rgba($neon-purple, 0.1);
+
+        &:hover {
+            border-color: $neon-purple;
+            box-shadow: 0 0 20px rgba($neon-purple, 0.3);
+            transform: translateY(-2px);
+        }
+
+        &.active {
+            color: $neon-purple;
+            border-color: $neon-purple;
+            box-shadow: 0 0 20px rgba($neon-purple, 0.4);
+            @include neon-glow;
+            background: linear-gradient(45deg, rgba($neon-purple, 0.1), rgba($accent-color, 0.1));
+        }
+    }
+}
+
+// Hero Section
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../assets/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    @include flex-center;
+    text-align: center;
+    padding: 0 2rem;
+
+    .hero-content {
+        max-width: 800px;
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: $neon-purple;
+            @include neon-glow;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+// Buttons
+.cta-button, .play-button {
+    display: inline-block;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(45deg, $accent-color, $neon-purple);
+    color: $text-color;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    @include transition;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba($neon-purple, 0.5);
+    margin: 1rem;
+    text-transform: none;
+    letter-spacing: 1px;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 20px rgba($neon-purple, 0.8);
+        background: linear-gradient(45deg, $neon-purple, $accent-color);
+    }
+}
+
+// Features Section
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background-color: $secondary-color;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    @include transition;
+    border: 1px solid $accent-color;
+
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 10px $accent-color;
+    }
+
+    i {
+        font-size: 2.5rem;
+        color: $neon-purple;
+        margin-bottom: 1rem;
+        @include neon-glow;
+    }
+
+    h3 {
+        margin-bottom: 1rem;
+        color: $neon-purple;
+    }
+}
+
+// Games Section
+.games-section {
+    padding: 6rem 2rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    h2 {
+        text-align: center;
+        margin-bottom: 3rem;
+        color: $neon-purple;
+        @include neon-glow;
+    }
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.game-card {
+    background: rgba($primary-color, 0.1);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    @include transition;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 400px;
+    border: 1px solid $accent-color;
+
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 20px rgba($neon-purple, 0.3);
+    }
+
+    .game-image {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    h3 {
+        color: $neon-purple;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    p {
+        color: $text-color;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+    }
+
+    .play-button {
+        width: 100%;
+        text-align: center;
+        margin-top: auto;
+        display: block;
+    }
+}
+
+// About Section
+.about-section {
+    padding: 6rem 2rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    h2 {
+        text-align: center;
+        margin-bottom: 3rem;
+        color: $neon-purple;
+        @include neon-glow;
+    }
+}
+
+.about-content {
+    background-color: $secondary-color;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid $accent-color;
+}
+
+.features-list {
+    list-style: none;
+    margin-top: 2rem;
+
+    li {
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+
+        i {
+            color: $neon-purple;
+            margin-right: 1rem;
+            @include neon-glow;
+        }
+    }
+}
+
+// Contact Section
+.contact-section {
+    padding: 6rem 2rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    h2 {
+        text-align: center;
+        margin-bottom: 3rem;
+        color: $neon-purple;
+        @include neon-glow;
+    }
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.contact-info {
+    background-color: $secondary-color;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid $accent-color;
+
+    h3 {
+        margin-bottom: 2rem;
+        color: $neon-purple;
+        @include neon-glow;
+    }
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    i {
+        color: $neon-purple;
+        margin-right: 1rem;
+        font-size: 1.2rem;
+        @include neon-glow;
+    }
+}
+
+.contact-form {
+    background-color: $secondary-color;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid $accent-color;
+
+    .form-group {
+        margin-bottom: 1.5rem;
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: $neon-purple;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: color.adjust($secondary-color, $lightness: -5%);
+            border: 1px solid $accent-color;
+            border-radius: 5px;
+            color: $text-color;
+
+            &:focus {
+                outline: none;
+                border-color: $neon-purple;
+                box-shadow: 0 0 5px $neon-purple;
+            }
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+    }
+}
+
+.submit-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: $accent-color;
+    color: $text-color;
+    border: 2px solid $neon-purple;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    @include transition;
+
+    &:hover {
+        background-color: $neon-purple;
+        box-shadow: 0 0 10px $neon-purple;
+    }
+}
+
+// Footer
+.footer {
+    background-color: $secondary-color;
+    padding: 4rem 2rem 2rem;
+    margin-top: 4rem;
+    border-top: 2px solid $accent-color;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section {
+    h3 {
+        color: $neon-purple;
+        margin-bottom: 1rem;
+        @include neon-glow;
+    }
+
+    ul {
+        list-style: none;
+
+        li {
+            margin-bottom: 0.5rem;
+
+            a {
+                color: $text-color;
+                text-decoration: none;
+                @include transition;
+
+                &:hover {
+                    color: $neon-purple;
+                    @include neon-glow;
+                }
+            }
+        }
+    }
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid $accent-color;
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .hero {
+        .hero-content {
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    }
+}
+
+.game-layout {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: calc(100vh - 200px);
+    margin-top: 80px;
+}
+
+.game-area {
+    flex: 3;
+    background: rgba($primary-color, 0.2);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid $accent-color;
+    box-shadow: 0 0 30px rgba($neon-purple, 0.2);
+    backdrop-filter: blur(10px);
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .dealer-hand, .player-hand {
+        margin-bottom: 2rem;
+        background: rgba($primary-color, 0.3);
+        border-radius: 15px;
+        padding: 1.5rem;
+        border: 1px solid rgba($neon-purple, 0.2);
+        box-shadow: 0 0 20px rgba($neon-purple, 0.1);
+
+        h3 {
+            color: $text-color;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba($neon-purple, 0.2);
+
+            span {
+                font-size: 1.2rem;
+                color: #ffd700;
+                background: rgba(0, 0, 0, 0.5);
+                padding: 0.2rem 0.5rem;
+                border-radius: 5px;
+                margin-left: 1rem;
+                box-shadow: 0 0 10px rgba(#ffd700, 0.2);
+            }
+        }
+
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1rem;
+            min-height: 200px;
+            background: rgba($primary-color, 0.2);
+            border-radius: 10px;
+            border: 1px solid rgba($neon-purple, 0.1);
+        }
+    }
+
+    .cards-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .card {
+        width: 120px;
+        height: 180px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        margin: 0.5rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: translateY(-10px);
+        }
+    }
+
+    .controls {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 2rem;
+
+        button {
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(45deg, $accent-color, $neon-purple);
+            color: $text-color;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            @include transition;
+            font-weight: bold;
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 0 15px rgba($neon-purple, 0.4);
+            }
+
+            &:disabled {
+                background: #666;
+                cursor: not-allowed;
+                transform: none;
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+.betting-panel {
+    flex: 1;
+    background: rgba($primary-color, 0.2);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid $accent-color;
+    box-shadow: 0 0 30px rgba($neon-purple, 0.2);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-width: 250px;
+    height: fit-content;
+
+    .balance {
+        font-size: 1.5rem;
+        color: $text-color;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba($primary-color, 0.2);
+        padding: 0.8rem 1.2rem;
+        border-radius: 10px;
+        border: 1px solid rgba($neon-purple, 0.3);
+        box-shadow: 0 0 15px rgba($neon-purple, 0.2);
+        backdrop-filter: blur(5px);
+
+        span:first-child {
+            color: $neon-purple;
+            font-weight: bold;
+            @include neon-glow;
+            letter-spacing: 1px;
+        }
+
+        #balance {
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 0 0 5px #ffd700,
+                        0 0 10px #ffd700;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+
+            &::after {
+                content: '$';
+                color: #ffd700;
+                text-shadow: 0 0 5px #ffd700,
+                            0 0 10px #ffd700;
+            }
+        }
+    }
+
+    .betting-area {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+
+        .quick-bets {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: space-between;
+            width: 100%;
+
+            .quick-bet {
+                flex: 1;
+                padding: 0.8rem;
+                background: linear-gradient(45deg, #ffd700, $neon-purple);
+                color: $text-color;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                @include transition;
+                font-size: 1rem;
+                font-weight: bold;
+                box-shadow: 0 0 15px rgba($neon-purple, 0.2);
+                position: relative;
+                overflow: hidden;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: linear-gradient(45deg, rgba($neon-purple, 0.2), rgba(#ffd700, 0.2));
+                    z-index: 1;
+                    opacity: 0;
+                    @include transition;
+                }
+
+                &:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 0 30px rgba($neon-purple, 0.6);
+
+                    &::before {
+                        opacity: 1;
+                    }
+                }
+
+                &:active {
+                    transform: translateY(1px);
+                }
+
+                span {
+                    position: relative;
+                    z-index: 2;
+                }
+            }
+        }
+
+        input {
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba($primary-color, 0.3);
+            color: $text-color;
+            width: 100%;
+            font-size: 1.1rem;
+            text-align: center;
+            border: 1px solid rgba($neon-purple, 0.3);
+            box-shadow: 0 0 15px rgba($neon-purple, 0.1);
+
+            &:focus {
+                outline: none;
+                box-shadow: 0 0 20px rgba($neon-purple, 0.3);
+                border-color: $neon-purple;
+            }
+        }
+
+        #place-bet {
+            padding: 1rem;
+            background: linear-gradient(45deg, #ffd700, $neon-purple);
+            color: $text-color;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            @include transition;
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 0 15px rgba($neon-purple, 0.2);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(45deg, rgba($neon-purple, 0.2), rgba(#ffd700, 0.2));
+                z-index: 1;
+                opacity: 0;
+                @include transition;
+            }
+
+            &:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 0 30px rgba($neon-purple, 0.6);
+
+                &::before {
+                    opacity: 1;
+                }
+            }
+
+            &:active {
+                transform: translateY(1px);
+            }
+
+            span {
+                position: relative;
+                z-index: 2;
+            }
+        }
+    }
+}
+
+.slots-machine {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: rgba($primary-color, 0.1);
+    border-radius: 15px;
+    border: 1px solid rgba($neon-purple, 0.2);
+    box-shadow: inset 0 0 20px rgba($neon-purple, 0.1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            45deg,
+            transparent 0%,
+            rgba($neon-purple, 0.1) 50%,
+            transparent 100%
+        );
+        animation: rotate 20s linear infinite;
+        z-index: -1;
+    }
+
+    .reel {
+        width: 120px;
+        height: 120px;
+        background: rgba($primary-color, 0.3);
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3.5rem;
+        @include transition;
+        box-shadow: 0 0 20px rgba($neon-purple, 0.2);
+        border: 1px solid rgba($neon-purple, 0.3);
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba($neon-purple, 0.1) 50%,
+                transparent 100%
+            );
+            animation: rotate 10s linear infinite;
+        }
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba($neon-purple, 0.4);
+            border-color: $neon-purple;
+        }
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.balance-update {
+    position: absolute;
+    font-size: 1.2rem;
+    font-weight: bold;
+    pointer-events: none;
+    animation: floatAndFade 1.5s ease-out forwards;
+    
+    &.positive {
+        color: #00ff00;
+        text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    }
+    
+    &.negative {
+        color: #ff0000;
+        text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+    }
+}
+
+@keyframes floatAndFade {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0, -50px);
+        opacity: 0;
+    }
+} 
