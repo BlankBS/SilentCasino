@@ -18,6 +18,10 @@
                 <li><a href="games.html">Games</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li class="header-balance">
+                    <span>Balance:</span>
+                    <span id="header-balance">1000</span>
+                </li>
             </ul>
         </nav>
     </header>
@@ -33,12 +37,6 @@
                 <div class="player-hand">
                     <h3>Your Hand <span id="player-score">0</span></h3>
                     <div class="cards-container" id="player-cards"></div>
-                </div>
-
-                <div class="controls">
-                    <button id="hit">Hit</button>
-                    <button id="stand">Stand</button>
-                    <button id="double">Double</button>
                 </div>
             </div>
 
@@ -56,6 +54,12 @@
                         <button class="quick-bet" data-amount="1000">1000</button>
                     </div>
                     <button id="place-bet">Place Bet</button>
+                </div>
+
+                <div class="controls">
+                    <button id="hit">Hit</button>
+                    <button id="stand">Stand</button>
+                    <button id="double">Double</button>
                 </div>
             </div>
         </div>
@@ -90,6 +94,7 @@
         </div>
     </footer>
 
+    <script src="js/balance.js"></script>
     <script src="js/blackjack.js"></script>
 </body>
 </html> 

@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const balanceElement = document.getElementById('balance');
+    const headerBalanceElement = document.getElementById('header-balance');
     const betAmountInput = document.getElementById('bet-amount');
     const placeBetButton = document.getElementById('place-bet');
     const hitButton = document.getElementById('hit');
@@ -10,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const dealerScoreElement = document.getElementById('dealer-score');
     const playerScoreElement = document.getElementById('player-score');
 
-    let playerBalance = 1000;
     let currentBet = 0;
     let deck = [];
     let dealerHand = [];
@@ -102,13 +102,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        if (betAmount > playerBalance) {
+        if (betAmount > window.playerBalance) {
             alert('Insufficient balance');
             return;
         }
 
         currentBet = betAmount;
-        playerBalance -= betAmount;
+        window.playerBalance -= betAmount;
         updateBalance();
 
         // Create new deck and deal cards
@@ -149,12 +149,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function double() {
         if (!gameInProgress || playerHand.length !== 2) return;
 
-        if (currentBet * 2 > playerBalance) {
+        if (currentBet * 2 > window.playerBalance) {
             alert('Insufficient balance to double');
             return;
         }
 
-        playerBalance -= currentBet;
+        window.playerBalance -= currentBet;
         currentBet *= 2;
         updateBalance();
 
@@ -198,25 +198,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Update balance display
     function updateBalance() {
-        balanceElement.textContent = playerBalance;
+        window.updateAllBalances();
     }
 
     // Show balance update animation
     function showBalanceUpdate(amount, isPositive) {
+        // Create animation for betting panel
         const updateElement = document.createElement('div');
         updateElement.className = `balance-update ${isPositive ? 'positive' : 'negative'}`;
         updateElement.textContent = `${isPositive ? '+' : '-'}${amount}`;
         
-        // Позиционируем элемент рядом с балансом
+        // Position the element next to the betting panel balance
         const balanceRect = balanceElement.getBoundingClientRect();
         updateElement.style.left = `${balanceRect.right + 10}px`;
         updateElement.style.top = `${balanceRect.top}px`;
+        updateElement.style.position = 'fixed';
+        updateElement.style.zIndex = '1001';
         
         document.body.appendChild(updateElement);
 
-        // Remove the element after animation completes
+        // Create animation for header
+        const headerUpdateElement = document.createElement('div');
+        headerUpdateElement.className = `balance-update ${isPositive ? 'positive' : 'negative'}`;
+        headerUpdateElement.textContent = `${isPositive ? '+' : '-'}${amount}`;
+        
+        // Position the element next to the header balance
+        const headerBalanceRect = headerBalanceElement.getBoundingClientRect();
+        const headerRect = document.querySelector('.header').getBoundingClientRect();
+        headerUpdateElement.style.left = `${headerBalanceRect.right + 10}px`;
+        headerUpdateElement.style.top = `${headerBalanceRect.top}px`;
+        headerUpdateElement.style.position = 'fixed';
+        headerUpdateElement.style.zIndex = '1001';
+        
+        document.body.appendChild(headerUpdateElement);
+
+        // Remove both elements after animation completes
         setTimeout(() => {
             updateElement.remove();
+            headerUpdateElement.remove();
         }, 1500);
     }
 
@@ -226,10 +245,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (result === 'win') {
             const winAmount = currentBet * multiplier;
-            playerBalance += winAmount;
+            window.playerBalance += winAmount;
             showBalanceUpdate(winAmount, true);
         } else if (result === 'push') {
-            playerBalance += currentBet;
+            window.playerBalance += currentBet;
             showBalanceUpdate(currentBet, true);
         } else {
             showBalanceUpdate(currentBet, false);
@@ -274,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update button states
         hitButton.disabled = !gameInProgress;
         standButton.disabled = !gameInProgress;
-        doubleButton.disabled = !gameInProgress || playerHand.length !== 2 || currentBet * 2 > playerBalance;
+        doubleButton.disabled = !gameInProgress || playerHand.length !== 2 || currentBet * 2 > window.playerBalance;
         placeBetButton.disabled = gameInProgress;
         betAmountInput.disabled = gameInProgress;
     }

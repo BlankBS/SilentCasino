@@ -66,17 +66,17 @@ body {
         text-decoration: none;
         @include transition;
 
-        &:hover {
-            transform: translateY(-2px);
-            text-shadow: 0 0 10px $neon-purple,
-                        0 0 20px $neon-purple;
+        :hover
+        {
+            transform: scale(1.02);
+            text-shadow: 0 0 30px $neon-purple;
         }
     }
 
     h1 {
         color: $neon-purple;
         font-size: 2rem;
-        @include neon-glow;
+        text-shadow: 0 0 15px $neon-purple;
     }
 }
 
@@ -84,6 +84,7 @@ body {
     display: flex;
     list-style: none;
     gap: 2rem;
+    align-items: center;
 
     a {
         color: $text-color;
@@ -109,6 +110,38 @@ body {
             background: linear-gradient(45deg, rgba($neon-purple, 0.1), rgba($accent-color, 0.1));
         }
     }
+
+    .header-balance {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: rgba($primary-color, 0.2);
+        border-radius: 25px;
+        border: 1px solid rgba($neon-purple, 0.3);
+        box-shadow: 0 0 10px rgba($neon-purple, 0.1);
+
+        span:first-child {
+            color: $neon-purple;
+            font-weight: bold;
+            text-shadow: 0 0 2px $neon-purple;
+        }
+
+        #header-balance {
+            color: #ffd700;
+            font-weight: bold;
+            text-shadow: 0 0 2px #ffd700;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+
+            &::after {
+                content: '$';
+                color: #ffd700;
+                text-shadow: 0 0 2px #ffd700;
+            }
+        }
+    }
 }
 
 // Hero Section
@@ -128,7 +161,7 @@ body {
             font-size: 3rem;
             margin-bottom: 1rem;
             color: $neon-purple;
-            @include neon-glow;
+            text-shadow: 0 0 3px $neon-purple;
         }
 
         p {
@@ -208,7 +241,7 @@ body {
         text-align: center;
         margin-bottom: 3rem;
         color: $neon-purple;
-        @include neon-glow;
+        text-shadow: 0 0 3px $neon-purple;
     }
 }
 
@@ -280,7 +313,7 @@ body {
         text-align: center;
         margin-bottom: 3rem;
         color: $neon-purple;
-        @include neon-glow;
+        text-shadow: 0 0 3px $neon-purple;
     }
 }
 
@@ -303,7 +336,7 @@ body {
         i {
             color: $neon-purple;
             margin-right: 1rem;
-            @include neon-glow;
+            text-shadow: 0 0 2px $neon-purple;
         }
     }
 }
@@ -318,7 +351,7 @@ body {
         text-align: center;
         margin-bottom: 3rem;
         color: $neon-purple;
-        @include neon-glow;
+        text-shadow: 0 0 3px $neon-purple;
     }
 }
 
@@ -337,20 +370,20 @@ body {
     h3 {
         margin-bottom: 2rem;
         color: $neon-purple;
-        @include neon-glow;
+        text-shadow: 0 0 3px $neon-purple;
     }
 }
 
 .info-item {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 
     i {
         color: $neon-purple;
         margin-right: 1rem;
         font-size: 1.2rem;
-        @include neon-glow;
+        text-shadow: 0 0 2px $neon-purple;
     }
 }
 
@@ -394,17 +427,50 @@ body {
 .submit-button {
     width: 100%;
     padding: 1rem;
-    background-color: $accent-color;
-    color: $text-color;
+    background: linear-gradient(45deg, $primary-color, $secondary-color);
+    color: $neon-purple;
     border: 2px solid $neon-purple;
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
     @include transition;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba($neon-purple, 0.3);
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba($neon-purple, 0.1), rgba($accent-color, 0.1));
+        z-index: 1;
+        opacity: 0;
+        @include transition;
+    }
 
     &:hover {
-        background-color: $neon-purple;
-        box-shadow: 0 0 10px $neon-purple;
+        transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba($neon-purple, 0.5);
+        color: $text-color;
+        background: linear-gradient(45deg, $neon-purple, $accent-color);
+
+        &::before {
+            opacity: 1;
+        }
+    }
+
+    &:active {
+        transform: translateY(1px);
+    }
+
+    span {
+        position: relative;
+        z-index: 2;
     }
 }
 
@@ -428,7 +494,7 @@ body {
     h3 {
         color: $neon-purple;
         margin-bottom: 1rem;
-        @include neon-glow;
+        text-shadow: 0 0 3px $neon-purple;
     }
 
     ul {
@@ -444,7 +510,7 @@ body {
 
                 &:hover {
                     color: $neon-purple;
-                    @include neon-glow;
+                    text-shadow: 0 0 2px $neon-purple;
                 }
             }
         }
@@ -572,28 +638,45 @@ body {
 
     .controls {
         display: flex;
-        gap: 1rem;
         justify-content: center;
-        margin-top: 2rem;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        padding: 0.8rem;
+        background: rgba($secondary-color, 0.8);
+        border-radius: 10px;
+        border: 1px solid $accent-color;
+        width: 100%;
+        box-sizing: border-box;
 
         button {
-            padding: 0.8rem 1.5rem;
+            flex: 1;
+            padding: 0.6rem 1rem;
             background: linear-gradient(45deg, $accent-color, $neon-purple);
             color: $text-color;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            @include transition;
             font-weight: bold;
+            @include transition;
+            box-shadow: 0 0 10px rgba($neon-purple, 0.3);
+            font-size: 0.9rem;
+            white-space: nowrap;
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
 
             &:hover {
                 transform: translateY(-2px);
-                box-shadow: 0 0 15px rgba($neon-purple, 0.4);
+                box-shadow: 0 0 20px rgba($neon-purple, 0.5);
+                background: linear-gradient(45deg, $neon-purple, $accent-color);
             }
 
             &:disabled {
-                background: #666;
+                background: #333;
                 cursor: not-allowed;
+                opacity: 0.7;
                 transform: none;
                 box-shadow: none;
             }
@@ -625,21 +708,20 @@ body {
         padding: 0.8rem 1.2rem;
         border-radius: 10px;
         border: 1px solid rgba($neon-purple, 0.3);
-        box-shadow: 0 0 15px rgba($neon-purple, 0.2);
+        box-shadow: 0 0 10px rgba($neon-purple, 0.1);
         backdrop-filter: blur(5px);
 
         span:first-child {
             color: $neon-purple;
             font-weight: bold;
-            @include neon-glow;
+            text-shadow: 0 0 2px $neon-purple;
             letter-spacing: 1px;
         }
 
         #balance {
             font-weight: bold;
             color: #ffd700;
-            text-shadow: 0 0 5px #ffd700,
-                        0 0 10px #ffd700;
+            text-shadow: 0 0 2px #ffd700;
             display: flex;
             align-items: center;
             gap: 0.3rem;
@@ -647,8 +729,7 @@ body {
             &::after {
                 content: '$';
                 color: #ffd700;
-                text-shadow: 0 0 5px #ffd700,
-                            0 0 10px #ffd700;
+                text-shadow: 0 0 2px #ffd700;
             }
         }
     }
@@ -780,7 +861,54 @@ body {
 
             span {
                 position: relative;
-                z-index: 2;
+                z-index: 1;
+            }
+        }
+    }
+
+    .controls {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        padding: 0.8rem;
+        background: rgba($secondary-color, 0.8);
+        border-radius: 10px;
+        border: 1px solid $accent-color;
+        width: 100%;
+        box-sizing: border-box;
+
+        button {
+            flex: 1;
+            padding: 0.6rem 1rem;
+            background: linear-gradient(45deg, $accent-color, $neon-purple);
+            color: $text-color;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            @include transition;
+            box-shadow: 0 0 10px rgba($neon-purple, 0.3);
+            font-size: 0.9rem;
+            white-space: nowrap;
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 0 20px rgba($neon-purple, 0.5);
+                background: linear-gradient(45deg, $neon-purple, $accent-color);
+            }
+
+            &:disabled {
+                background: #333;
+                cursor: not-allowed;
+                opacity: 0.7;
+                transform: none;
+                box-shadow: none;
             }
         }
     }
@@ -902,5 +1030,92 @@ body {
     100% {
         transform: translate(0, -50px);
         opacity: 0;
+    }
+}
+
+.result-message {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background: rgba($primary-color, 0.5);
+    border: 1px solid rgba($neon-purple, 0.3);
+    box-shadow: 0 0 10px rgba($neon-purple, 0.2);
+
+    &.win {
+        color: #00ff00;
+        text-shadow: 0 0 5px #00ff00;
+        border-color: rgba(#00ff00, 0.3);
+        box-shadow: 0 0 15px rgba(#00ff00, 0.3);
+    }
+
+    &.loss {
+        color: #ff0000;
+        text-shadow: 0 0 5px #ff0000;
+        border-color: rgba(#ff0000, 0.3);
+        box-shadow: 0 0 15px rgba(#ff0000, 0.3);
+    }
+}
+
+.game-rules {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba($primary-color, 0.5);
+    border: 1px solid rgba($neon-purple, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba($neon-purple, 0.2);
+    backdrop-filter: blur(5px);
+
+    h3 {
+        color: $neon-purple;
+        margin-bottom: 1rem;
+        text-shadow: 0 0 3px $neon-purple;
+        text-align: center;
+    }
+
+    ul {
+        list-style: none;
+        margin-bottom: 2rem;
+
+        li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: $text-color;
+
+            &::before {
+                content: '•';
+                color: $neon-purple;
+                position: absolute;
+                left: 0;
+            }
+        }
+    }
+}
+
+.payout-table {
+    .payout-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba($neon-purple, 0.2);
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        .symbols {
+            color: $text-color;
+            font-size: 1.2rem;
+        }
+
+        .multiplier {
+            color: $neon-purple;
+            font-weight: bold;
+            text-shadow: 0 0 3px $neon-purple;
+        }
     }
 } 

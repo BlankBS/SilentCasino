@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slots - SilentCasino</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="index.html"><h1>SilentCasino</h1></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="games.html">Games</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="header-balance">
+                    <span>Balance:</span>
+                    <span id="header-balance">1000</span>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="game-layout">
+        <div class="game-area">
+            <div class="slots-machine">
+                <div class="reel">🍒</div>
+                <div class="reel">🍊</div>
+                <div class="reel">🍋</div>
+            </div>
+            <div id="result-message" class="result-message"></div>
+
+            <div class="game-rules">
+                <h3>Game Rules</h3>
+                <ul>
+                    <li>Place your bet using the quick bet buttons or input field</li>
+                    <li>Click 'Spin' to start the game</li>
+                    <li>Match symbols to win prizes</li>
+                    <li>Minimum bet: 1</li>
+                    <li>Maximum bet: Your current balance</li>
+                </ul>
+
+                <h3>Payout Table</h3>
+                <div class="payout-table">
+                    <div class="payout-row">
+                        <span class="symbols">💎💎💎</span>
+                        <span class="multiplier">x10</span>
+                    </div>
+                    <div class="payout-row">
+                        <span class="symbols">7️⃣7️⃣7️⃣</span>
+                        <span class="multiplier">x5</span>
+                    </div>
+                    <div class="payout-row">
+                        <span class="symbols">🍒🍒🍒</span>
+                        <span class="multiplier">x3</span>
+                    </div>
+                    <div class="payout-row">
+                        <span class="symbols">🍊🍊🍊</span>
+                        <span class="multiplier">x3</span>
+                    </div>
+                    <div class="payout-row">
+                        <span class="symbols">🍋🍋🍋</span>
+                        <span class="multiplier">x3</span>
+                    </div>
+                    <div class="payout-row">
+                        <span class="symbols">🍇🍇🍇</span>
+                        <span class="multiplier">x3</span>
+                    </div>
+                    <div class="payout-row">
+                        <span class="symbols">Any 2 matching symbols</span>
+                        <span class="multiplier">x1</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="betting-panel">
+            <div class="balance">
+                <span>Balance:</span>
+                <span id="balance">1000</span>
+            </div>
+
+            <div class="betting-area">
+                <div class="quick-bets">
+                    <button class="quick-bet" data-amount="10">10</button>
+                    <button class="quick-bet" data-amount="50">50</button>
+                    <button class="quick-bet" data-amount="100">100</button>
+                    <button class="quick-bet" data-amount="500">500</button>
+                </div>
+
+                <input type="number" id="bet-amount" placeholder="Enter bet amount" min="1">
+                <button id="spin-button" class="play-button">Spin</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SilentCasino</h3>
+                <p>Your premium gaming destination</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="games.html">Games</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Minsk, Sverdlova 13A</li>
+                    <li><i class="fas fa-phone"></i> +375 29 140 5781</li>
+                    <li><i class="fas fa-envelope"></i> silent.casino@mail.ru</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SilentCasino. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/balance.js"></script>
+    <script src="js/slots.js"></script>
+</body>
+</html> 
