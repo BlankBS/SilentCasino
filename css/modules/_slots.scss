@@ -147,35 +147,114 @@
 
 .game-rules {
     margin-top: 2rem;
-    padding: 1.5rem;
+    padding: 2rem;
     background: rgba($primary-color, 0.5);
     border: 1px solid rgba($neon-purple, 0.3);
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba($neon-purple, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba($neon-purple, 0.2);
     backdrop-filter: blur(5px);
+    max-width: 1200px;
+    margin: 40px auto;
+    position: relative;
+    z-index: 2;
 
     h3 {
         color: $neon-purple;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
         text-shadow: 0 0 3px $neon-purple;
         text-align: center;
+        font-size: 2rem;
+        position: relative;
+        padding-bottom: 1rem;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, $neon-purple, transparent);
+            box-shadow: 0 0 10px $neon-purple;
+        }
     }
 
-    ul {
-        list-style: none;
-        margin-bottom: 2rem;
+    .rules-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
 
-        li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
+    .rule-block {
+        background: rgba($primary-color, 0.3);
+        border: 1px solid rgba($neon-purple, 0.2);
+        border-radius: 15px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba($neon-purple, 0.1) 50%,
+                transparent 100%
+            );
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba($neon-purple, 0.3);
+            border-color: $neon-purple;
+        }
+
+        .rule-icon {
+            font-size: 2rem;
+            color: $neon-purple;
+            margin-bottom: 1rem;
+            text-align: center;
+            text-shadow: 0 0 10px $neon-purple;
+        }
+
+        h4 {
+            color: $neon-purple;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+            text-shadow: 0 0 3px $neon-purple;
+        }
+
+        p, ul {
             color: $text-color;
+            line-height: 1.6;
+        }
 
-            &::before {
-                content: '•';
-                color: $neon-purple;
-                position: absolute;
-                left: 0;
+        ul {
+            list-style: none;
+            padding-left: 0;
+
+            li {
+                margin-bottom: 0.5rem;
+                padding-left: 1.5rem;
+                position: relative;
+
+                &::before {
+                    content: '•';
+                    color: $neon-purple;
+                    position: absolute;
+                    left: 0;
+                }
             }
         }
     }

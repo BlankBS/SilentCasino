@@ -273,48 +273,67 @@
     .game-controls {
         display: flex;
         justify-content: center;
-        gap: 0.5rem;
-        margin-top: 1rem;
-        padding: 0.8rem;
-        background: rgba($secondary-color, 0.8);
-        border-radius: 10px;
-        border: 1px solid $accent-color;
+        gap: 8px;
+        margin-top: 20px;
+        flex-wrap: wrap;
         width: 100%;
-        box-sizing: border-box;
 
         button {
-            flex: 1;
-            padding: 0.8rem 1.2rem;
-            background: linear-gradient(45deg, $accent-color, $neon-purple);
-            color: $text-color;
+            padding: 10px 20px;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            @include transition;
-            box-shadow: 0 0 10px rgba($neon-purple, 0.3);
+            border-radius: $border-radius-md;
             font-size: 1rem;
-            white-space: nowrap;
-            min-width: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            white-space: nowrap;
+            min-width: 90px;
+            max-width: 110px;
+            text-align: center;
+            flex: 1;
+            background: rgba($primary-color, 0.3);
+            border: 1px solid rgba($neon-purple, 0.3);
+            color: $text-color;
 
-            &:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 0 20px rgba($neon-purple, 0.5);
-                background: linear-gradient(45deg, $neon-purple, $accent-color);
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(
+                    45deg,
+                    transparent 0%,
+                    rgba($neon-purple, 0.1) 50%,
+                    transparent 100%
+                );
+                animation: rotate 20s linear infinite;
+                z-index: -1;
+            }
+
+            &#hit, &#stand, &#double {
+                &:hover {
+                    background: rgba($neon-purple, 0.2);
+                    border-color: $neon-purple;
+                    box-shadow: 0 0 15px rgba($neon-purple, 0.3);
+                }
+
+                &:active {
+                    transform: scale(0.98);
+                }
             }
 
             &:disabled {
-                background: #333;
+                opacity: 0.5;
                 cursor: not-allowed;
-                opacity: 0.7;
-                transform: none;
-                box-shadow: none;
+                transform: none !important;
+                box-shadow: none !important;
             }
         }
     }
