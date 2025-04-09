@@ -1,15 +1,35 @@
 @use "sass:color";
 
 // Variables
-$primary-color: #0a0a0a;
-$secondary-color: #1a1a1a;
-$accent-color: #9d00ff;
-$neon-purple: #ff00ff;
-$neon-green: #00ff00;
-$neon-blue: #00ffff;
+$primary-color: #ff00ff;
+$secondary-color: #00ffff;
+$background-color: #0a0a0a;
 $text-color: #ffffff;
-$text-secondary: #cccccc;
+$text-secondary: rgba(255, 255, 255, 0.7);
 $font-family: 'Arial', sans-serif;
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+// Border radius
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 16px;
+
+// Transitions
+$transition-fast: 0.2s;
+$transition-normal: 0.3s;
+$transition-slow: 0.5s;
+
+// Z-index
+$z-index-background: -1;
+$z-index-content: 1;
+$z-index-header: 2;
+$z-index-modal: 100;
 
 // Mixins
 @mixin flex-center {

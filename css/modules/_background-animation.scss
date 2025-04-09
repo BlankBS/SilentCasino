@@ -1,0 +1,149 @@
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.moving-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #ff00ff;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+    opacity: 0.7;
+    animation: moveDot 15s infinite linear;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: inherit;
+        border-radius: inherit;
+        filter: blur(5px);
+    }
+}
+
+@keyframes moveDot {
+    0% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(calc(100vw * var(--x1)), calc(100vh * var(--y1)));
+    }
+    50% {
+        transform: translate(calc(100vw * var(--x2)), calc(100vh * var(--y2)));
+    }
+    75% {
+        transform: translate(calc(100vw * var(--x3)), calc(100vh * var(--y3)));
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+// Generate random positions for each dot
+.dot-1 {
+    --x1: 0.2;
+    --y1: 0.3;
+    --x2: 0.8;
+    --y2: 0.6;
+    --x3: 0.4;
+    --y3: 0.9;
+    animation-delay: 0s;
+}
+
+.dot-2 {
+    --x1: 0.7;
+    --y1: 0.1;
+    --x2: 0.3;
+    --y2: 0.8;
+    --x3: 0.9;
+    --y3: 0.4;
+    animation-delay: 1.5s;
+}
+
+.dot-3 {
+    --x1: 0.1;
+    --y1: 0.7;
+    --x2: 0.6;
+    --y2: 0.2;
+    --x3: 0.3;
+    --y3: 0.5;
+    animation-delay: 3s;
+}
+
+.dot-4 {
+    --x1: 0.5;
+    --y1: 0.9;
+    --x2: 0.2;
+    --y2: 0.4;
+    --x3: 0.8;
+    --y3: 0.1;
+    animation-delay: 4.5s;
+}
+
+.dot-5 {
+    --x1: 0.9;
+    --y1: 0.5;
+    --x2: 0.4;
+    --y2: 0.7;
+    --x3: 0.1;
+    --y3: 0.2;
+    animation-delay: 6s;
+}
+
+.dot-6 {
+    --x1: 0.3;
+    --y1: 0.6;
+    --x2: 0.7;
+    --y2: 0.3;
+    --x3: 0.5;
+    --y3: 0.8;
+    animation-delay: 7.5s;
+}
+
+.dot-7 {
+    --x1: 0.6;
+    --y1: 0.8;
+    --x2: 0.1;
+    --y2: 0.5;
+    --x3: 0.7;
+    --y3: 0.2;
+    animation-delay: 9s;
+}
+
+.dot-8 {
+    --x1: 0.8;
+    --y1: 0.2;
+    --x2: 0.5;
+    --y2: 0.9;
+    --x3: 0.2;
+    --y3: 0.6;
+    animation-delay: 10.5s;
+}
+
+.dot-9 {
+    --x1: 0.4;
+    --y1: 0.4;
+    --x2: 0.9;
+    --y2: 0.1;
+    --x3: 0.6;
+    --y3: 0.7;
+    animation-delay: 12s;
+}
+
+.dot-10 {
+    --x1: 0.2;
+    --y1: 0.9;
+    --x2: 0.7;
+    --y2: 0.5;
+    --x3: 0.4;
+    --y3: 0.3;
+    animation-delay: 13.5s;
+} 
