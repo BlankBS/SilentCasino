@@ -1,85 +1,158 @@
 @use "variables" as *;
 
 // Games Section
-.games-section {
-    padding: 6rem 2rem 4rem;
+.games {
+    padding: 100px 20px 40px;
+    text-align: center;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
 
-    h2 {
-        text-align: center;
-        margin-bottom: 3rem;
-        color: $neon-purple;
-        text-shadow: 0 0 3px $neon-purple;
+.games h2 {
+    color: $neon-purple;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px $neon-purple,
+                 0 0 20px $neon-purple,
+                 0 0 30px $neon-purple;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, $neon-purple, transparent);
+        box-shadow: 0 0 10px $neon-purple;
     }
 }
 
 .games-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
 }
 
 .game-card {
-    background-color: $secondary-color;
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
     overflow: hidden;
-    @include transition;
-    border: 1px solid $accent-color;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    transition: transform 0.3s ease;
+    width: 300px !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
+    flex: 0 0 300px !important;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+    border: 2px solid transparent;
+    box-shadow: 0 0 20px rgba($neon-purple, 0.2);
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 15px;
+        padding: 2px;
+        background: linear-gradient(45deg, $neon-purple, $neon-blue);
+        -webkit-mask: 
+            linear-gradient(#fff 0 0) content-box, 
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+    }
 
     &:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 0 20px rgba($neon-purple, 0.5);
+        transform: translateY(-5px);
+        box-shadow: 0 0 30px rgba($neon-purple, 0.4);
     }
 
     .game-image {
-        padding: 1rem;
-        height: 180px;
+        width: 100%;
+        height: 150px;
+        overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
-        
+        padding: 20px 0 0 0;
+
         img {
-            max-width: 100%;
-            max-height: 100%;
+            width: auto;
+            height: 100%;
             object-fit: contain;
-            border-radius: 5px;
+            transition: transform 0.3s ease;
+
+            &:hover {
+                transform: scale(1.05);
+            }
         }
     }
 
     .game-info {
-        padding: 1.5rem;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        justify-content: space-between;
+        padding: 20px;
+        width: 100%;
+        box-sizing: border-box;
 
         h3 {
-            color: $neon-purple;
-            margin-bottom: 1rem;
-            @include neon-glow;
+            color: $text-color;
+            margin-bottom: 15px;
             font-size: 1.5rem;
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            position: relative;
+            padding-bottom: 10px;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 50px;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, $text-color, transparent);
+            }
         }
 
         p {
-            color: $text-secondary;
-            margin-bottom: 1.5rem;
+            color: $text-color;
+            margin-bottom: 20px;
+            font-size: 1rem;
             line-height: 1.6;
-            font-size: 1.1rem;
-            font-weight: 300;
-            letter-spacing: 0.5px;
+            opacity: 0.9;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
         }
+    }
+}
 
-        .play-button {
-            margin: 0 auto;
-            margin-top: auto;
-        }
+.play-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, $primary-color, $secondary-color);
+    color: $text-color;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    width: auto;
+    min-width: 120px;
+
+    &:hover {
+        background: linear-gradient(45deg, $secondary-color, $primary-color);
+        transform: scale(1.05);
     }
 } 

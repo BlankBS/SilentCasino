@@ -1,11 +1,14 @@
 @use "sass:color";
 
 // Variables
-$primary-color: #ff00ff;
-$secondary-color: #00ffff;
-$background-color: #0a0a0a;
+$primary-color: #0a0a0a;
+$secondary-color: #1a1a1a;
+$accent-color: #9d00ff;
+$neon-purple: #ff00ff;
+$neon-green: #00ff00;
+$neon-blue: #00ffff;
 $text-color: #ffffff;
-$text-secondary: rgba(255, 255, 255, 0.7);
+$text-secondary: #cccccc;
 $font-family: 'Arial', sans-serif;
 
 // Spacing

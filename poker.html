@@ -8,47 +8,82 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <div class="background-animation">
+        <div class="moving-dot dot-1"></div>
+        <div class="moving-dot dot-2"></div>
+        <div class="moving-dot dot-3"></div>
+        <div class="moving-dot dot-4"></div>
+        <div class="moving-dot dot-5"></div>
+        <div class="moving-dot dot-6"></div>
+        <div class="moving-dot dot-7"></div>
+        <div class="moving-dot dot-8"></div>
+        <div class="moving-dot dot-9"></div>
+        <div class="moving-dot dot-10"></div>
+    </div>
     <header class="header">
         <nav class="nav">
             <div class="logo">
-                <h1>SilentCasino</h1>
+                <a href="index.html"><h1>SilentCasino</h1></a>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="games.html" class="active">Games</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li class="header-balance">
+                    <span>Balance:</span>
+                    <span id="header-balance">1000</span>
+                </li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <div class="game-container">
-            <div class="game-interface">
-                <h2>Poker</h2>
-                <div class="balance">Balance: $<span id="balance">1000</span></div>
-                <div class="betting-area">
-                    <input type="number" id="bet-amount" placeholder="Bet Amount" min="1">
-                    <button id="place-bet">Place Bet</button>
+        <section class="game-page">
+            <div class="game-container">
+                <div class="game-rules">
+                    <h2>Poker Rules</h2>
+                    <div class="rules-content">
+                        <h3>Objective</h3>
+                        <p>Win chips by having the best hand or by making other players fold.</p>
+                        
+                        <h3>Hand Rankings</h3>
+                        <p>From highest to lowest: Royal Flush, Straight Flush, Four of a Kind, Full House, Flush, Straight, Three of a Kind, Two Pair, One Pair, High Card.</p>
+                        
+                        <h3>Gameplay</h3>
+                        <p>1. Place your bet<br>
+                           2. Receive your cards<br>
+                           3. Bet, call, raise, or fold<br>
+                           4. Showdown if multiple players remain</p>
+                    </div>
                 </div>
+                
                 <div class="game-area">
-                    <div class="community-cards">
-                        <h3>Community Cards</h3>
-                        <div id="community-cards"></div>
+                    <div class="dealer-area">
+                        <h3>Dealer</h3>
+                        <div class="cards"></div>
                     </div>
-                    <div class="player-hand">
+                    
+                    <div class="player-area">
                         <h3>Your Hand</h3>
-                        <div id="player-cards"></div>
+                        <div class="cards"></div>
+                        <div class="score">Score: <span>0</span></div>
                     </div>
-                    <div class="controls">
-                        <button id="fold">Fold</button>
-                        <button id="call">Call</button>
-                        <button id="raise">Raise</button>
+                    
+                    <div class="betting-panel">
+                        <div class="bet-controls">
+                            <input type="number" min="10" step="10" value="10" class="bet-input">
+                            <button class="bet-button">Bet</button>
+                        </div>
+                        <div class="game-controls">
+                            <button class="action-button">Call</button>
+                            <button class="action-button">Raise</button>
+                            <button class="action-button">Fold</button>
+                        </div>
                     </div>
                 </div>
-                <div class="result"></div>
             </div>
-        </div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -69,17 +104,17 @@
             <div class="footer-section">
                 <h3>Contact Info</h3>
                 <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> 123 Casino Street</li>
-                    <li><i class="fas fa-phone"></i> +1 234 567 890</li>
-                    <li><i class="fas fa-envelope"></i> info@silentcasino.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Minsk, Sverdlova 13A</li>
+                    <li><i class="fas fa-phone"></i> +375 29 140 5781</li>
+                    <li><i class="fas fa-envelope"></i> silent.casino@mail.ru</li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 SilentCasino. All rights reserved.</p>
+            <p>&copy; 2025 SilentCasino. All rights reserved.</p>
         </div>
     </footer>
-
+    <script src="js/balance.js"></script>
     <script src="js/poker.js"></script>
 </body>
 </html> 
