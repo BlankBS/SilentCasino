@@ -7,14 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const raiseButton = document.getElementById('raise');
     const communityCardsElement = document.getElementById('community-cards');
     const playerCardsElement = document.getElementById('player-cards');
-    const resultElement = document.querySelector('.result');
+    const dealerCardsElement = document.getElementById('dealer-cards');
+    const resultElement = document.getElementById('game-result');
+    const quickBetButtons = document.querySelectorAll('.quick-bet');
+    const betButton = document.querySelector('.bet-button');
 
-    let balance = 1000;
+    let balance = parseInt(balanceElement.textContent);
     let currentBet = 0;
     let pot = 0;
     let deck = [];
     let communityCards = [];
     let playerHand = [];
+    let dealerHand = [];
     let gameInProgress = false;
 
     // Initialize the game
@@ -22,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         deck = createDeck();
         communityCards = [];
         playerHand = [];
+        dealerHand = [];
         pot = 0;
         gameInProgress = false;
         updateUI();
@@ -69,17 +74,33 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Initialize new round
         currentBet = betAmount;
         balance -= betAmount;
         pot = betAmount;
         updateBalance();
 
-        // Deal initial cards
-        playerHand = [dealCard(), dealCard()];
-        communityCards = [dealCard(), dealCard(), dealCard()];
-        gameInProgress = true;
+        // Create and shuffle new deck
+        deck = createDeck();
+        shuffleDeck(deck);
 
+        // Deal cards
+        playerHand = [dealCard(), dealCard()];
+        dealerHand = [dealCard(), dealCard()];
+        communityCards = [dealCard(), dealCard(), dealCard()];
+        
+        // Update game state
+        gameInProgress = true;
+        
+        // Update UI
         updateUI();
+        showResult('Game started! Your turn to act.');
+        
+        // Update button states
+        placeBetButton.disabled = true;
+        document.querySelectorAll('.action-button').forEach(button => {
+            button.disabled = false;
+        });
     }
 
     // Player folds
@@ -141,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Determine the winner
     function determineWinner() {
         const playerHandValue = evaluateHand([...playerHand, ...communityCards]);
-        const dealerHandValue = evaluateHand([...communityCards, dealCard(), dealCard()]);
+        const dealerHandValue = evaluateHand([...dealerHand, ...communityCards]);
 
         if (playerHandValue > dealerHandValue) {
             endGame(`You win! Hand: ${getHandName(playerHandValue)}`);
@@ -177,31 +198,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Update the UI
     function updateUI() {
-        communityCardsElement.innerHTML = '';
+        // Clear previous cards
         playerCardsElement.innerHTML = '';
-
-        communityCards.forEach(card => {
-            const cardElement = createCardElement(card);
-            communityCardsElement.appendChild(cardElement);
-        });
-
+        dealerCardsElement.innerHTML = '';
+        
+        // Update player cards
         playerHand.forEach(card => {
-            const cardElement = createCardElement(card);
+            const cardElement = document.createElement('div');
+            cardElement.className = 'card';
+            const img = document.createElement('img');
+            img.src = `assets/cards/${card.suit}_${card.value}.png`;
+            img.alt = `${card.value} of ${card.suit}`;
+            cardElement.appendChild(img);
             playerCardsElement.appendChild(cardElement);
         });
+        
+        // Update dealer cards (face down at first)
+        dealerHand.forEach(() => {
+            const cardElement = document.createElement('div');
+            cardElement.className = 'card face-down';
+            const img = document.createElement('img');
+            img.src = 'assets/cards/back.png';
+            img.alt = 'Card back';
+            cardElement.appendChild(img);
+            dealerCardsElement.appendChild(cardElement);
+        });
 
-        foldButton.disabled = !gameInProgress;
-        callButton.disabled = !gameInProgress;
-        raiseButton.disabled = !gameInProgress;
-        placeBetButton.disabled = gameInProgress;
-    }
-
-    // Create a card element
-    function createCardElement(card) {
-        const cardElement = document.createElement('div');
-        cardElement.className = 'card';
-        cardElement.textContent = `${card.value}${getSuitSymbol(card.suit)}`;
-        return cardElement;
+        // Update quick bet buttons
+        quickBetButtons.forEach(button => {
+            button.disabled = gameInProgress || parseInt(button.dataset.amount) > balance;
+        });
     }
 
     // Get suit symbol
@@ -225,8 +251,28 @@ document.addEventListener('DOMContentLoaded', () => {
         resultElement.textContent = message;
     }
 
-    // Event listeners
+    // Обработка быстрых ставок
+    quickBetButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const amount = parseInt(button.dataset.amount);
+            if (amount <= balance) {
+                betAmountInput.value = amount;
+            }
+        });
+    });
+
+    // Обработка кнопки Bet
     placeBetButton.addEventListener('click', startRound);
+
+    // Валидация ввода ставки
+    betAmountInput.addEventListener('input', () => {
+        const value = parseInt(betAmountInput.value);
+        if (value > balance) {
+            betAmountInput.value = balance;
+        }
+    });
+
+    // Event listeners
     foldButton.addEventListener('click', fold);
     callButton.addEventListener('click', call);
     raiseButton.addEventListener('click', raise);
