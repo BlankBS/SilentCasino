@@ -1179,6 +1179,55 @@ body {
   text-shadow: 0 0 3px #ff00ff;
 }
 
+.play-button {
+  background: rgba(10, 10, 10, 0.2);
+  color: #ffffff;
+  border: 1px solid rgba(255, 0, 255, 0.3);
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.1);
+}
+.play-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 0%, rgba(255, 0, 255, 0.1) 50%, transparent 100%);
+  animation: rotate 20s linear infinite;
+  z-index: -1;
+}
+.play-button:hover {
+  background: rgba(10, 10, 10, 0.3);
+  border-color: #ff00ff;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.2);
+  transform: translateY(-2px);
+}
+.play-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.1);
+}
+.play-button:disabled {
+  background: rgba(10, 10, 10, 0.1);
+  border-color: rgba(255, 0, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.play-button:disabled::before {
+  display: none;
+}
+
 .background-animation {
   position: fixed;
   top: 0;
