@@ -1,0 +1,55 @@
+@use "variables" as *;
+
+// Games Section
+.games-section {
+    padding: 6rem 2rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    h2 {
+        text-align: center;
+        margin-bottom: 3rem;
+        color: $neon-purple;
+        text-shadow: 0 0 3px $neon-purple;
+    }
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.game-card {
+    background-color: $secondary-color;
+    border-radius: 10px;
+    overflow: hidden;
+    @include transition;
+    border: 1px solid $accent-color;
+
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 20px rgba($neon-purple, 0.5);
+    }
+
+    img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .game-info {
+        padding: 1.5rem;
+
+        h3 {
+            color: $neon-purple;
+            margin-bottom: 1rem;
+            @include neon-glow;
+        }
+
+        p {
+            color: $text-secondary;
+            margin-bottom: 1.5rem;
+        }
+    }
+} 

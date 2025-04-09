@@ -1,0 +1,207 @@
+@use "variables" as *;
+
+.slots-machine {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: rgba($primary-color, 0.1);
+    border-radius: 15px;
+    border: 1px solid rgba($neon-purple, 0.2);
+    box-shadow: inset 0 0 20px rgba($neon-purple, 0.1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            45deg,
+            transparent 0%,
+            rgba($neon-purple, 0.1) 50%,
+            transparent 100%
+        );
+        animation: rotate 20s linear infinite;
+        z-index: -1;
+    }
+
+    .reel {
+        width: 120px;
+        height: 120px;
+        background: rgba($primary-color, 0.3);
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3.5rem;
+        @include transition;
+        box-shadow: 0 0 20px rgba($neon-purple, 0.2);
+        border: 1px solid rgba($neon-purple, 0.3);
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                45deg,
+                transparent 0%,
+                rgba($neon-purple, 0.1) 50%,
+                transparent 100%
+            );
+            animation: rotate 10s linear infinite;
+        }
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba($neon-purple, 0.4);
+            border-color: $neon-purple;
+        }
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.balance-update {
+    position: absolute;
+    font-size: 1.2rem;
+    font-weight: bold;
+    pointer-events: none;
+    animation: floatAndFade 1.5s ease-out forwards;
+    
+    &.positive {
+        color: #00ff00;
+        text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    }
+    
+    &.negative {
+        color: #ff0000;
+        text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+    }
+}
+
+@keyframes floatAndFade {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0, -50px);
+        opacity: 0;
+    }
+}
+
+.result-message {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background: rgba($primary-color, 0.5);
+    border: 1px solid rgba($neon-purple, 0.3);
+    box-shadow: 0 0 10px rgba($neon-purple, 0.2);
+
+    &.win {
+        color: #00ff00;
+        text-shadow: 0 0 5px #00ff00;
+        border-color: rgba(#00ff00, 0.3);
+        box-shadow: 0 0 15px rgba(#00ff00, 0.3);
+    }
+
+    &.loss {
+        color: #ff0000;
+        text-shadow: 0 0 5px #ff0000;
+        border-color: rgba(#ff0000, 0.3);
+        box-shadow: 0 0 15px rgba(#ff0000, 0.3);
+    }
+}
+
+.game-rules {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba($primary-color, 0.5);
+    border: 1px solid rgba($neon-purple, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba($neon-purple, 0.2);
+    backdrop-filter: blur(5px);
+
+    h3 {
+        color: $neon-purple;
+        margin-bottom: 1rem;
+        text-shadow: 0 0 3px $neon-purple;
+        text-align: center;
+    }
+
+    ul {
+        list-style: none;
+        margin-bottom: 2rem;
+
+        li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: $text-color;
+
+            &::before {
+                content: '•';
+                color: $neon-purple;
+                position: absolute;
+                left: 0;
+            }
+        }
+    }
+}
+
+.payout-table {
+    .payout-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba($neon-purple, 0.2);
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        .symbols {
+            color: $text-color;
+            font-size: 1.2rem;
+        }
+
+        .multiplier {
+            color: $neon-purple;
+            font-weight: bold;
+            text-shadow: 0 0 3px $neon-purple;
+        }
+    }
+} 

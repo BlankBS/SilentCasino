@@ -1,0 +1,52 @@
+@use "variables" as *;
+
+// Footer
+.footer {
+    background-color: $secondary-color;
+    padding: 3rem 2rem;
+    margin-top: 4rem;
+    border-top: 2px solid $accent-color;
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+
+        .footer-section {
+            h3 {
+                color: $neon-purple;
+                margin-bottom: 1.5rem;
+                @include neon-glow;
+            }
+
+            ul {
+                list-style: none;
+
+                li {
+                    margin-bottom: 0.8rem;
+
+                    a {
+                        color: $text-secondary;
+                        text-decoration: none;
+                        @include transition;
+
+                        &:hover {
+                            color: $neon-purple;
+                            text-shadow: 0 0 3px $neon-purple;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .footer-bottom {
+        text-align: center;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba($accent-color, 0.3);
+        color: $text-secondary;
+    }
+} 

@@ -1,0 +1,25 @@
+@use "variables" as *;
+
+// Buttons
+.cta-button, .play-button {
+    display: inline-block;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(45deg, $accent-color, $neon-purple);
+    color: $text-color;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    @include transition;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba($neon-purple, 0.5);
+    margin: 1rem;
+    text-transform: none;
+    letter-spacing: 1px;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 20px rgba($neon-purple, 0.8);
+        background: linear-gradient(45deg, $neon-purple, $accent-color);
+    }
+} 

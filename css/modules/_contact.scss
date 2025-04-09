@@ -1,0 +1,135 @@
+@use "sass:color";
+@use "variables" as *;
+
+// Contact Section
+.contact-section {
+    padding: 6rem 2rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    h2 {
+        text-align: center;
+        margin-bottom: 3rem;
+        color: $neon-purple;
+        text-shadow: 0 0 3px $neon-purple;
+    }
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.contact-info {
+    background-color: $secondary-color;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid $accent-color;
+
+    h3 {
+        margin-bottom: 2rem;
+        color: $neon-purple;
+        text-shadow: 0 0 3px $neon-purple;
+    }
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+
+    i {
+        color: $neon-purple;
+        margin-right: 1rem;
+        font-size: 1.2rem;
+        text-shadow: 0 0 2px $neon-purple;
+    }
+}
+
+.contact-form {
+    background-color: $secondary-color;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid $accent-color;
+
+    .form-group {
+        margin-bottom: 1.5rem;
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: $neon-purple;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: color.adjust($secondary-color, $lightness: -5%);
+            border: 1px solid $accent-color;
+            border-radius: 5px;
+            color: $text-color;
+
+            &:focus {
+                outline: none;
+                border-color: $neon-purple;
+                box-shadow: 0 0 5px $neon-purple;
+            }
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+    }
+}
+
+.submit-button {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(45deg, $primary-color, $secondary-color);
+    color: $neon-purple;
+    border: 2px solid $neon-purple;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    @include transition;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba($neon-purple, 0.3);
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba($neon-purple, 0.1), rgba($accent-color, 0.1));
+        z-index: 1;
+        opacity: 0;
+        @include transition;
+    }
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 20px rgba($neon-purple, 0.5);
+        color: $text-color;
+        background: linear-gradient(45deg, $neon-purple, $accent-color);
+
+        &::before {
+            opacity: 1;
+        }
+    }
+
+    &:active {
+        transform: translateY(1px);
+    }
+
+    span {
+        position: relative;
+        z-index: 2;
+    }
+} 

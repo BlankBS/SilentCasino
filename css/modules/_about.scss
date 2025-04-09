@@ -1,0 +1,39 @@
+@use "variables" as *;
+
+// About Section
+.about-section {
+    padding: 6rem 2rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    h2 {
+        text-align: center;
+        margin-bottom: 3rem;
+        color: $neon-purple;
+        text-shadow: 0 0 3px $neon-purple;
+    }
+}
+
+.about-content {
+    background-color: $secondary-color;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid $accent-color;
+}
+
+.features-list {
+    list-style: none;
+    margin-top: 2rem;
+
+    li {
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+
+        i {
+            color: $neon-purple;
+            margin-right: 1rem;
+            text-shadow: 0 0 2px $neon-purple;
+        }
+    }
+} 

@@ -1,0 +1,28 @@
+@use "variables" as *;
+
+// Hero Section
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../assets/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    @include flex-center;
+    text-align: center;
+    padding: 0 2rem;
+
+    .hero-content {
+        max-width: 800px;
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: $neon-purple;
+            text-shadow: 0 0 3px $neon-purple;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+    }
+} 

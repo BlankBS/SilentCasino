@@ -1,0 +1,15 @@
+@use "variables" as *;
+
+// Reset and Base Styles
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family;
+    background-color: $primary-color;
+    color: $text-color;
+    line-height: 1.6;
+} 

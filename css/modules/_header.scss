@@ -1,0 +1,103 @@
+@use "variables" as *;
+
+// Header Styles
+.header {
+    background-color: $secondary-color;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid $accent-color;
+}
+
+.nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    a {
+        text-decoration: none;
+        @include transition;
+
+        :hover {
+            transform: scale(1.02);
+            text-shadow: 0 0 30px $neon-purple;
+        }
+    }
+
+    h1 {
+        color: $neon-purple;
+        font-size: 2rem;
+        text-shadow: 0 0 15px $neon-purple;
+    }
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+
+    a {
+        color: $text-color;
+        text-decoration: none;
+        @include transition;
+        padding: 0.5rem 1.5rem;
+        border-radius: 25px;
+        border: 1px solid rgba($neon-purple, 0.3);
+        background: rgba($primary-color, 0.2);
+        box-shadow: 0 0 10px rgba($neon-purple, 0.1);
+
+        &:hover {
+            border-color: $neon-purple;
+            box-shadow: 0 0 20px rgba($neon-purple, 0.3);
+            transform: translateY(-2px);
+        }
+
+        &.active {
+            color: $neon-purple;
+            border-color: $neon-purple;
+            box-shadow: 0 0 20px rgba($neon-purple, 0.4);
+            @include neon-glow;
+            background: linear-gradient(45deg, rgba($neon-purple, 0.1), rgba($accent-color, 0.1));
+        }
+    }
+
+    .header-balance {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: rgba($primary-color, 0.2);
+        border-radius: 25px;
+        border: 1px solid rgba($neon-purple, 0.3);
+        box-shadow: 0 0 10px rgba($neon-purple, 0.1);
+
+        span:first-child {
+            color: $neon-purple;
+            font-weight: bold;
+            text-shadow: 0 0 2px $neon-purple;
+        }
+
+        #header-balance {
+            color: #ffd700;
+            font-weight: bold;
+            text-shadow: 0 0 2px #ffd700;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+
+            &::after {
+                content: '$';
+                color: #ffd700;
+                text-shadow: 0 0 2px #ffd700;
+            }
+        }
+    }
+} 

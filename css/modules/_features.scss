@@ -1,0 +1,37 @@
+@use "variables" as *;
+
+// Features Section
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background-color: $secondary-color;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    @include transition;
+    border: 1px solid $accent-color;
+
+    &:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 10px $accent-color;
+    }
+
+    i {
+        font-size: 2.5rem;
+        color: $neon-purple;
+        margin-bottom: 1rem;
+        @include neon-glow;
+    }
+
+    h3 {
+        margin-bottom: 1rem;
+        color: $neon-purple;
+    }
+} 

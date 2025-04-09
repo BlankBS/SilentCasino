@@ -1,0 +1,37 @@
+@use "variables" as *;
+
+// Animations
+@keyframes neon-pulse {
+    0% {
+        text-shadow: 0 0 3px $neon-purple,
+                     0 0 5px $neon-purple;
+    }
+    50% {
+        text-shadow: 0 0 10px $neon-purple,
+                     0 0 20px $neon-purple;
+    }
+    100% {
+        text-shadow: 0 0 3px $neon-purple,
+                     0 0 5px $neon-purple;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.neon-pulse {
+    animation: neon-pulse 2s infinite;
+}
+
+.float {
+    animation: float 3s ease-in-out infinite;
+} 
