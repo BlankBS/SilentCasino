@@ -26,30 +26,60 @@
     overflow: hidden;
     @include transition;
     border: 1px solid $accent-color;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 
     &:hover {
         transform: translateY(-10px);
         box-shadow: 0 0 20px rgba($neon-purple, 0.5);
     }
 
-    img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
+    .game-image {
+        padding: 1rem;
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 5px;
+        }
     }
 
     .game-info {
         padding: 1.5rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: space-between;
 
         h3 {
             color: $neon-purple;
             margin-bottom: 1rem;
             @include neon-glow;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         p {
             color: $text-secondary;
             margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .play-button {
+            margin: 0 auto;
+            margin-top: auto;
         }
     }
 } 

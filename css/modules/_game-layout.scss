@@ -89,53 +89,6 @@
             transform: translateY(-10px);
         }
     }
-
-    .controls {
-        display: flex;
-        justify-content: center;
-        gap: 0.5rem;
-        margin-top: 1rem;
-        padding: 0.8rem;
-        background: rgba($secondary-color, 0.8);
-        border-radius: 10px;
-        border: 1px solid $accent-color;
-        width: 100%;
-        box-sizing: border-box;
-
-        button {
-            flex: 1;
-            padding: 0.6rem 1rem;
-            background: linear-gradient(45deg, $accent-color, $neon-purple);
-            color: $text-color;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            @include transition;
-            box-shadow: 0 0 10px rgba($neon-purple, 0.3);
-            font-size: 0.9rem;
-            white-space: nowrap;
-            min-width: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-
-            &:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 0 20px rgba($neon-purple, 0.5);
-                background: linear-gradient(45deg, $neon-purple, $accent-color);
-            }
-
-            &:disabled {
-                background: #333;
-                cursor: not-allowed;
-                opacity: 0.7;
-                transform: none;
-                box-shadow: none;
-            }
-        }
-    }
 }
 
 .betting-panel {
@@ -252,38 +205,35 @@
         }
 
         input {
-            padding: 1rem;
-            border: none;
-            border-radius: 10px;
-            background: rgba($primary-color, 0.3);
-            color: $text-color;
             width: 100%;
-            font-size: 1.1rem;
-            text-align: center;
+            padding: 0.8rem 1.2rem;
+            background: rgba($primary-color, 0.3);
             border: 1px solid rgba($neon-purple, 0.3);
-            box-shadow: 0 0 15px rgba($neon-purple, 0.1);
+            border-radius: 10px;
+            color: $text-color;
+            font-size: 1rem;
+            @include transition;
+            box-shadow: 0 0 10px rgba($neon-purple, 0.1);
 
             &:focus {
                 outline: none;
-                box-shadow: 0 0 20px rgba($neon-purple, 0.3);
                 border-color: $neon-purple;
+                box-shadow: 0 0 20px rgba($neon-purple, 0.3);
             }
         }
 
         #place-bet {
-            padding: 1rem;
-            background: linear-gradient(45deg, #ffd700, $neon-purple);
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, $accent-color, $neon-purple);
             color: $text-color;
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            @include transition;
-            font-size: 1.1rem;
             font-weight: bold;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            box-shadow: 0 0 15px rgba($neon-purple, 0.2);
-            width: 100%;
+            font-size: 1.2rem;
+            @include transition;
+            box-shadow: 0 0 15px rgba($neon-purple, 0.3);
             position: relative;
             overflow: hidden;
 
@@ -294,14 +244,14 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: linear-gradient(45deg, rgba($neon-purple, 0.2), rgba(#ffd700, 0.2));
+                background: linear-gradient(45deg, rgba($neon-purple, 0.2), rgba($accent-color, 0.2));
                 z-index: 1;
                 opacity: 0;
                 @include transition;
             }
 
             &:hover {
-                transform: translateY(-3px);
+                transform: translateY(-2px);
                 box-shadow: 0 0 30px rgba($neon-purple, 0.6);
 
                 &::before {
@@ -315,7 +265,56 @@
 
             span {
                 position: relative;
-                z-index: 1;
+                z-index: 2;
+            }
+        }
+    }
+
+    .game-controls {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        padding: 0.8rem;
+        background: rgba($secondary-color, 0.8);
+        border-radius: 10px;
+        border: 1px solid $accent-color;
+        width: 100%;
+        box-sizing: border-box;
+
+        button {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            background: linear-gradient(45deg, $accent-color, $neon-purple);
+            color: $text-color;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            @include transition;
+            box-shadow: 0 0 10px rgba($neon-purple, 0.3);
+            font-size: 1rem;
+            white-space: nowrap;
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 0 20px rgba($neon-purple, 0.5);
+                background: linear-gradient(45deg, $neon-purple, $accent-color);
+            }
+
+            &:disabled {
+                background: #333;
+                cursor: not-allowed;
+                opacity: 0.7;
+                transform: none;
+                box-shadow: none;
             }
         }
     }

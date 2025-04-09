@@ -205,28 +205,56 @@ body {
   overflow: hidden;
   transition: all 0.3s ease;
   border: 1px solid #9d00ff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .game-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
 }
-.game-card img {
-  width: 100%;
-  height: 200px;
-  -o-object-fit: cover;
-     object-fit: cover;
+.game-card .game-image {
+  padding: 1rem;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.game-card .game-image img {
+  max-width: 100%;
+  max-height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 5px;
 }
 .game-card .game-info {
   padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
 }
 .game-card .game-info h3 {
   color: #ff00ff;
   margin-bottom: 1rem;
   text-shadow: 0 0 3px #ff00ff, 0 0 5px #ff00ff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 .game-card .game-info p {
   color: #cccccc;
   margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+.game-card .game-info .play-button {
+  margin: 0 auto;
+  margin-top: auto;
 }
 
 .footer {
@@ -573,49 +601,6 @@ body {
 .game-area .card:hover {
   transform: translateY(-10px);
 }
-.game-area .controls {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  padding: 0.8rem;
-  background: rgba(26, 26, 26, 0.8);
-  border-radius: 10px;
-  border: 1px solid #9d00ff;
-  width: 100%;
-  box-sizing: border-box;
-}
-.game-area .controls button {
-  flex: 1;
-  padding: 0.6rem 1rem;
-  background: linear-gradient(45deg, #9d00ff, #ff00ff);
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
-  font-size: 0.9rem;
-  white-space: nowrap;
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.game-area .controls button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
-  background: linear-gradient(45deg, #ff00ff, #9d00ff);
-}
-.game-area .controls button:disabled {
-  background: #333;
-  cursor: not-allowed;
-  opacity: 0.7;
-  transform: none;
-  box-shadow: none;
-}
 
 .betting-panel {
   flex: 1;
@@ -723,36 +708,33 @@ body {
   z-index: 2;
 }
 .betting-panel .betting-area input {
-  padding: 1rem;
-  border: none;
-  border-radius: 10px;
-  background: rgba(10, 10, 10, 0.3);
-  color: #ffffff;
   width: 100%;
-  font-size: 1.1rem;
-  text-align: center;
+  padding: 0.8rem 1.2rem;
+  background: rgba(10, 10, 10, 0.3);
   border: 1px solid rgba(255, 0, 255, 0.3);
-  box-shadow: 0 0 15px rgba(255, 0, 255, 0.1);
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.1);
 }
 .betting-panel .betting-area input:focus {
   outline: none;
-  box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
   border-color: #ff00ff;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
 }
 .betting-panel .betting-area #place-bet {
-  padding: 1rem;
-  background: linear-gradient(45deg, #ffd700, #ff00ff);
+  width: 100%;
+  padding: 1rem 2rem;
+  background: linear-gradient(45deg, #9d00ff, #ff00ff);
   color: #ffffff;
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 1.1rem;
   font-weight: bold;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
-  width: 100%;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -763,13 +745,13 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, rgba(255, 0, 255, 0.2), rgba(255, 215, 0, 0.2));
+  background: linear-gradient(45deg, rgba(255, 0, 255, 0.2), rgba(157, 0, 255, 0.2));
   z-index: 1;
   opacity: 0;
   transition: all 0.3s ease;
 }
 .betting-panel .betting-area #place-bet:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
 }
 .betting-panel .betting-area #place-bet:hover::before {
@@ -780,7 +762,52 @@ body {
 }
 .betting-panel .betting-area #place-bet span {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+}
+.betting-panel .game-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.8rem;
+  background: rgba(26, 26, 26, 0.8);
+  border-radius: 10px;
+  border: 1px solid #9d00ff;
+  width: 100%;
+  box-sizing: border-box;
+}
+.betting-panel .game-controls button {
+  flex: 1;
+  padding: 0.8rem 1.2rem;
+  background: linear-gradient(45deg, #9d00ff, #ff00ff);
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+  font-size: 1rem;
+  white-space: nowrap;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.betting-panel .game-controls button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+  background: linear-gradient(45deg, #ff00ff, #9d00ff);
+}
+.betting-panel .game-controls button:disabled {
+  background: #333;
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+  box-shadow: none;
 }
 
 .slots-machine {
