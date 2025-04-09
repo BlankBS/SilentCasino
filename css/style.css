@@ -783,17 +783,17 @@ body {
 .betting-panel .betting-area .quick-bets .quick-bet {
   flex: 1;
   padding: 0.8rem;
-  background: linear-gradient(45deg, #ffd700, #ff00ff);
+  background: rgba(10, 10, 10, 0.3);
   color: #ffffff;
-  border: none;
-  border-radius: 10px;
+  border: 1px solid rgba(255, 0, 255, 0.3);
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
   font-size: 1rem;
-  font-weight: bold;
-  box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
+  font-weight: 600;
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 .betting-panel .betting-area .quick-bets .quick-bet::before {
   content: "";
@@ -802,24 +802,24 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, rgba(255, 0, 255, 0.2), rgba(255, 215, 0, 0.2));
-  z-index: 1;
-  opacity: 0;
-  transition: all 0.3s ease;
+  background: linear-gradient(45deg, transparent 0%, rgba(255, 0, 255, 0.1) 50%, transparent 100%);
+  animation: rotate 20s linear infinite;
+  z-index: -1;
 }
 .betting-panel .betting-area .quick-bets .quick-bet:hover {
+  background: rgba(255, 0, 255, 0.2);
+  border-color: #ff00ff;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
   transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
-}
-.betting-panel .betting-area .quick-bets .quick-bet:hover::before {
-  opacity: 1;
 }
 .betting-panel .betting-area .quick-bets .quick-bet:active {
-  transform: translateY(1px);
+  transform: scale(0.98);
 }
-.betting-panel .betting-area .quick-bets .quick-bet span {
-  position: relative;
-  z-index: 2;
+.betting-panel .betting-area .quick-bets .quick-bet:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
 }
 .betting-panel .betting-area input {
   width: 100%;
@@ -839,18 +839,20 @@ body {
 }
 .betting-panel .betting-area #place-bet {
   width: 100%;
-  padding: 1rem 2rem;
-  background: linear-gradient(45deg, #9d00ff, #ff00ff);
+  padding: 12px 24px;
+  background: rgba(10, 10, 10, 0.3);
   color: #ffffff;
-  border: none;
-  border-radius: 10px;
+  border: 1px solid rgba(255, 0, 255, 0.3);
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: bold;
-  font-size: 1.2rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   transition: all 0.3s ease;
-  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 .betting-panel .betting-area #place-bet::before {
   content: "";
@@ -859,24 +861,24 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, rgba(255, 0, 255, 0.2), rgba(157, 0, 255, 0.2));
-  z-index: 1;
-  opacity: 0;
-  transition: all 0.3s ease;
+  background: linear-gradient(45deg, transparent 0%, rgba(255, 0, 255, 0.1) 50%, transparent 100%);
+  animation: rotate 20s linear infinite;
+  z-index: -1;
 }
 .betting-panel .betting-area #place-bet:hover {
+  background: rgba(255, 0, 255, 0.2);
+  border-color: #ff00ff;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
   transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
-}
-.betting-panel .betting-area #place-bet:hover::before {
-  opacity: 1;
 }
 .betting-panel .betting-area #place-bet:active {
-  transform: translateY(1px);
+  transform: scale(0.98);
 }
-.betting-panel .betting-area #place-bet span {
-  position: relative;
-  z-index: 2;
+.betting-panel .betting-area #place-bet:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
 }
 .betting-panel .game-controls {
   display: flex;
