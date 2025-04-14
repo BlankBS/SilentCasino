@@ -14,10 +14,10 @@
                 <a href="index.html"><h1>SilentCasino</h1></a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="games.html">Games</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="games.html">Игры</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="contact.html">Контакты</a></li>
                 <li class="header-balance">
                     <span>Balance:</span>
                     <span id="header-balance">1000</span>
@@ -30,61 +30,61 @@
         <div class="game-layout">
             <div class="game-area">
                 <div class="dealer-hand">
-                    <h3>Dealer's Hand <span id="dealer-score">?</span></h3>
+                    <h3>Рука дилера <span id="dealer-score">?</span></h3>
                     <div class="cards-container" id="dealer-cards"></div>
                 </div>
 
                 <div class="player-hand">
-                    <h3>Your Hand <span id="player-score">0</span></h3>
+                    <h3>Ваша рука <span id="player-score">0</span></h3>
                     <div class="cards-container" id="player-cards"></div>
                 </div>
             </div>
 
             <div class="betting-panel">
                 <div class="balance">
-                    <span>Balance</span>
+                    <span>Баланс</span>
                     <span id="balance">1000</span>
                 </div>
 
                 <div class="betting-area">
-                    <input type="number" id="bet-amount" placeholder="Enter bet amount" min="1">
+                    <input type="number" id="bet-amount" placeholder="Введите сумму ставки" min="1">
                     <div class="quick-bets">
                         <button class="quick-bet" data-amount="10">10</button>
                         <button class="quick-bet" data-amount="100">100</button>
                         <button class="quick-bet" data-amount="1000">1000</button>
                     </div>
-                    <button id="place-bet">Place Bet</button>
+                    <button id="place-bet">Сделать ставку</button>
                 </div>
 
                 <div class="game-controls">
-                    <button id="hit">Hit</button>
-                    <button id="stand">Stand</button>
-                    <button id="double">Double</button>
+                    <button id="hit">Еще</button>
+                    <button id="stand">Хватит</button>
+                    <button id="double">Удвоить</button>
                 </div>
             </div>
         </div>
     </main>
 
     <div class="game-rules">
-        <h3>Game Rules</h3>
+        <h3>Правила игры</h3> 
         <div class="rules-grid">
             <div class="rule-block">
                 <div class="rule-icon">
                     <i class="fas fa-bullseye"></i>
                 </div>
-                <h4>Objective</h4>
-                <p>Get a hand value closer to 21 than the dealer without going over.</p>
+                <h4>Цель</h4>
+                <p>Получите руку ближе к 21, чем у дилера, не перебравшись.</p>
             </div>
 
             <div class="rule-block">
                 <div class="rule-icon">
                     <i class="fas fa-diamond"></i>
                 </div>
-                <h4>Card Values</h4>
+                <h4>Значения карт</h4>
                 <ul>
-                    <li>Number cards (2-10) are worth their face value</li>
-                    <li>Face cards (Jack, Queen, King) are worth 10</li>
-                    <li>Ace can be worth 1 or 11 (whichever is better for your hand)</li>
+                    <li>Числовые карты (2-10) стоят их номинальное значение</li>
+                    <li>Картинки (Валет, Дама, Король) стоят 10</li>
+                    <li>Туз может стоить 1 или 11 (в зависимости от того, что лучше для вашей руки)</li>
                 </ul>
             </div>
 
@@ -92,11 +92,11 @@
                 <div class="rule-icon">
                     <i class="fas fa-gamepad"></i>
                 </div>
-                <h4>Game Actions</h4>
+                <h4>Действия в игре</h4>
                 <ul>
-                    <li><strong>Hit:</strong> Take another card</li>
-                    <li><strong>Stand:</strong> Keep your current hand</li>
-                    <li><strong>Double:</strong> Double your bet and take exactly one more card</li>
+                    <li><strong>Еще:</strong> Взять еще одну карту</li>
+                    <li><strong>Хватит:</strong> Оставить текущую руку</li>
+                    <li><strong>Удвоить:</strong> Удвоить вашу ставку и взять ровно одну дополнительную карту</li>
                 </ul>
             </div>
 
@@ -104,12 +104,12 @@
                 <div class="rule-icon">
                     <i class="fas fa-trophy"></i>
                 </div>
-                <h4>Winning</h4>
+                <h4>Выигрыш</h4>
                 <ul>
-                    <li>If your hand is closer to 21 than the dealer's, you win 1:1</li>
-                    <li>If you get Blackjack (Ace + 10-value card), you win 3:2</li>
-                    <li>If you go over 21, you bust and lose your bet</li>
-                    <li>If the dealer busts, you win</li>
+                    <li>Если ваша рука ближе к 21, чем у дилера, вы выигрываете 1:1</li>
+                    <li>Если вы получаете Blackjack (Туз + 10-значная карта), вы выигрываете 3:2</li>
+                    <li>Если вы перебрали 21, вы проигрываете</li>
+                    <li>Если дилер перебрал 21, вы выигрываете</li>
                 </ul>
             </div>
         </div>
@@ -119,28 +119,28 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>SilentCasino</h3>
-                <p>Your premium gaming destination</p>
+                <p>Ваш премиальный игровой путь</p>
             </div>
             <div class="footer-section">
-                <h3>Quick Links</h3>
+                <h3>Быстрые ссылки</h3>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="games.html">Games</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="games.html">Игры</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Contact Info</h3>
+                <h3>Контактная информация</h3>
                 <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> 123 Casino Street, Las Vegas</li>
-                    <li><i class="fas fa-phone"></i> +1 234 567 890</li>
-                    <li><i class="fas fa-envelope"></i> info@silentcasino.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Минск, Свердлова 13А</li>
+                    <li><i class="fas fa-phone"></i> +375 29 140 5781</li>
+                    <li><i class="fas fa-envelope"></i> silent.casino@mail.ru</li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 SilentCasino. All rights reserved.</p>
+            <p>&copy; 2025 SilentCasino. Все права защищены.</p>
         </div>
     </footer>
 

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poker - SilentCasino</title>
+    <title>Покер - SilentCasino</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -26,12 +26,12 @@
                 <a href="index.html"><h1>SilentCasino</h1></a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="games.html" class="active">Games</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="games.html" class="active">Игры</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="contact.html">Контакты</a></li>
                 <li class="header-balance">
-                    <span>Balance:</span>
+                    <span>Баланс:</span>
                     <span id="header-balance">1000</span>
                 </li>
             </ul>
@@ -41,11 +41,11 @@
     <main class="game-layout">
         <div class="game-area">
             <div class="dealer-area">
-                <h2>Dealer</h2>
+                <h2>Дилер</h2>
                 <div id="dealer-cards" class="cards"></div>
             </div>
             <div class="player-area">
-                <h2>Player</h2>
+                <h2>Игрок</h2>
                 <div id="player-cards" class="cards"></div>
             </div>
             <div id="game-result" class="result"></div>
@@ -53,66 +53,66 @@
 
         <div class="betting-panel">
             <div class="balance">
-                <span>Balance:</span>
+                <span>Баланс:</span>
                 <span id="balance">1000</span>
             </div>
             <div class="bet-controls">
-                <input type="number" id="bet-amount" placeholder="Enter bet amount" min="1">
+                <input type="number" id="bet-amount" placeholder="Введите сумму ставки" min="1">
                 <div class="quick-bets">
                     <button class="quick-bet" data-amount="10">10</button>
                     <button class="quick-bet" data-amount="50">50</button>
                     <button class="quick-bet" data-amount="100">100</button>
                     <button class="quick-bet" data-amount="500">500</button>
                 </div>
-                <button id="place-bet" class="bet-button">Bet</button>
+                <button id="place-bet" class="bet-button">Ставка</button>
             </div>
             <div class="game-actions">
-                <button id="fold" class="action-button" disabled>Fold</button>
-                <button id="call" class="action-button" disabled>Call</button>
-                <button id="raise" class="action-button" disabled>Raise</button>
+                <button id="fold" class="action-button" disabled>Сбросить</button>
+                <button id="call" class="action-button" disabled>Колл</button>
+                <button id="raise" class="action-button" disabled>Поднять</button>
             </div>
         </div>
     </main>
 
     <div class="game-rules">
-        <h2>Poker Rules</h2>
+        <h2>Правила покера</h2>
         <div class="rules-content">
-            <h3>Objective</h3>
-            <p>Win chips by having the best hand or by making other players fold.</p>
+            <h3>Цель игры</h3>
+            <p>Выиграть фишки, собрав лучшую комбинацию или заставив других игроков сбросить карты.</p>
             
-            <h3>Hand Rankings</h3>
+            <h3>Ранги комбинаций</h3>
             <ol>
-                <li>Royal Flush: A, K, Q, J, 10 of the same suit</li>
-                <li>Straight Flush: Five consecutive cards of the same suit</li>
-                <li>Four of a Kind: Four cards of the same rank</li>
-                <li>Full House: Three of a kind plus a pair</li>
-                <li>Flush: Five cards of the same suit</li>
-                <li>Straight: Five consecutive cards</li>
-                <li>Three of a Kind: Three cards of the same rank</li>
-                <li>Two Pair: Two different pairs</li>
-                <li>One Pair: Two cards of the same rank</li>
-                <li>High Card: Highest card when no other hand is made</li>
+                <li>Роял-флэш: A, K, Q, J, 10 одной масти</li>
+                <li>Стрит-флэш: Пять последовательных карт одной масти</li>
+                <li>Каре: Четыре карты одного достоинства</li>
+                <li>Фулл-хаус: Три карты одного достоинства плюс пара</li>
+                <li>Флэш: Пять карт одной масти</li>
+                <li>Стрит: Пять последовательных карт</li>
+                <li>Тройка: Три карты одного достоинства</li>
+                <li>Две пары: Две разные пары</li>
+                <li>Пара: Две карты одного достоинства</li>
+                <li>Старшая карта: Старшая карта, когда нет других комбинаций</li>
             </ol>
             
-            <h3>Gameplay</h3>
+            <h3>Процесс игры</h3>
             <ol>
-                <li>Place your initial bet</li>
-                <li>Receive your two hole cards</li>
-                <li>First betting round (Call, Raise, or Fold)</li>
-                <li>Flop: Three community cards are dealt</li>
-                <li>Second betting round</li>
-                <li>Turn: Fourth community card</li>
-                <li>Third betting round</li>
-                <li>River: Fifth community card</li>
-                <li>Final betting round</li>
-                <li>Showdown: Best hand wins the pot</li>
+                <li>Сделайте начальную ставку</li>
+                <li>Получите две карты</li>
+                <li>Первый круг торговли (Колл, Поднять или Сбросить)</li>
+                <li>Флоп: Раздаются три общие карты</li>
+                <li>Второй круг торговли</li>
+                <li>Тёрн: Четвертая общая карта</li>
+                <li>Третий круг торговли</li>
+                <li>Ривер: Пятая общая карта</li>
+                <li>Финальный круг торговли</li>
+                <li>Вскрытие карт: Лучшая комбинация забирает банк</li>
             </ol>
 
-            <h3>Betting Options</h3>
+            <h3>Варианты ставок</h3>
             <ul>
-                <li>Fold: Give up your hand and lose your bet</li>
-                <li>Call: Match the current bet</li>
-                <li>Raise: Increase the current bet</li>
+                <li>Сбросить: Отказаться от карт и потерять ставку</li>
+                <li>Колл: Уравнять текущую ставку</li>
+                <li>Поднять: Увеличить текущую ставку</li>
             </ul>
         </div>
     </div>
@@ -121,28 +121,28 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>SilentCasino</h3>
-                <p>Your premium gaming destination</p>
+                <p>Ваше премиальное игровое пространство</p>
             </div>
             <div class="footer-section">
-                <h3>Quick Links</h3>
+                <h3>Быстрые ссылки</h3>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="games.html">Games</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="games.html">Игры</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Contact Info</h3>
+                <h3>Контактная информация</h3>
                 <ul>
-                    <li><i class="fas fa-map-marker-alt"></i> Minsk, Sverdlova 13A</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Минск, Свердлова 13А</li>
                     <li><i class="fas fa-phone"></i> +375 29 140 5781</li>
                     <li><i class="fas fa-envelope"></i> silent.casino@mail.ru</li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 SilentCasino. All rights reserved.</p>
+            <p>&copy; 2025 SilentCasino. Все права защищены.</p>
         </div>
     </footer>
     <script src="js/balance.js"></script>

@@ -272,8 +272,7 @@ body {
 .game-card .game-image img {
   width: auto;
   height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   transition: transform 0.3s ease;
   position: relative;
   z-index: 2;
@@ -571,7 +570,7 @@ body {
 .contact-form .form-group input, .contact-form .form-group textarea {
   width: 100%;
   padding: 0.8rem;
-  background-color: #0d0d0d;
+  background-color: rgb(13.25, 13.25, 13.25);
   border: 1px solid #9d00ff;
   border-radius: 5px;
   color: #ffffff;
@@ -649,8 +648,7 @@ body {
   padding: 2rem;
   border: 1px solid #9d00ff;
   box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   min-height: 500px;
   display: flex;
   flex-direction: column;
@@ -723,13 +721,11 @@ body {
   border-radius: 15px;
   border: 1px solid #9d00ff;
   box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   min-width: 250px;
-  height: -moz-fit-content;
   height: fit-content;
 }
 .betting-panel .balance {
@@ -743,8 +739,7 @@ body {
   border-radius: 10px;
   border: 1px solid rgba(255, 0, 255, 0.3);
   box-shadow: 0 0 10px rgba(255, 0, 255, 0.1);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
 }
 .betting-panel .balance span:first-child {
   color: #ff00ff;
@@ -1067,8 +1062,7 @@ body {
   border: 1px solid rgba(255, 0, 255, 0.3);
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(255, 0, 255, 0.2);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
   max-width: 1200px;
   margin: 40px auto;
   position: relative;
@@ -1373,4 +1367,6 @@ body {
   --x3: 0.4;
   --y3: 0.3;
   animation-delay: 13.5s;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
