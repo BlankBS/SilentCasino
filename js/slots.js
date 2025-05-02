@@ -11,21 +11,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let isSpinning = false;
     let currentBet = 0;
 
-    // Initialize game
     function initGame() {
         updateBalance();
         setupEventListeners();
     }
 
-    // Update balance display
     function updateBalance() {
         balanceDisplay.textContent = window.playerBalance;
         document.getElementById('header-balance').textContent = window.playerBalance;
     }
 
-    // Setup event listeners
     function setupEventListeners() {
-        // Quick bet buttons
         quickBets.forEach(button => {
             button.addEventListener('click', () => {
                 const amount = parseInt(button.dataset.amount);
@@ -33,21 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Spin button
         spinButton.addEventListener('click', () => {
             if (!isSpinning && currentBet > 0 && currentBet <= window.playerBalance) {
                 spin();
             }
         });
 
-        // Bet input
         betInput.addEventListener('input', () => {
             const amount = parseInt(betInput.value) || 0;
             setBet(amount);
         });
     }
 
-    // Set bet amount
     function setBet(amount) {
         if (amount > window.playerBalance) {
             amount = window.playerBalance;
@@ -56,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
         betInput.value = amount;
     }
 
-    // Add to current bet
     function addToBet(amount) {
         const newBet = currentBet + amount;
         if (newBet > window.playerBalance) {
@@ -66,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Spin the reels
     function spin() {
         if (isSpinning) return;
 
@@ -75,9 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
         updateBalance();
         showBalanceUpdate(currentBet, false);
 
-        // Animate each reel
         reels.forEach((reel, index) => {
-            const spins = 10 + index * 2; // Different spin duration for each reel
+            const spins = 10 + index * 2;
             let currentSpin = 0;
 
             const spinInterval = setInterval(() => {
@@ -88,11 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (currentSpin >= spins) {
                     clearInterval(spinInterval);
                     
-                    // Set final symbol
                     const finalSymbol = symbols[Math.floor(Math.random() * symbols.length)];
                     reel.textContent = finalSymbol;
 
-                    // Check for win after all reels stop
                     if (index === reels.length - 1) {
                         setTimeout(checkWin, 500);
                     }
@@ -101,12 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Check for winning combinations
     function checkWin() {
         const results = Array.from(reels).map(reel => reel.textContent);
         let winAmount = 0;
 
-        // Check for three of a kind
         if (results[0] === results[1] && results[1] === results[2]) {
             const symbol = results[0];
             switch (symbol) {
@@ -120,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     winAmount = currentBet * 3;
             }
         }
-        // Check for two of a kind
         else if (results[0] === results[1] || results[1] === results[2] || results[0] === results[2]) {
             winAmount = currentBet;
         }
@@ -139,6 +124,5 @@ document.addEventListener('DOMContentLoaded', () => {
         isSpinning = false;
     }
 
-    // Initialize the game
     initGame();
 }); 

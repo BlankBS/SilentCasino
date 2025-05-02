@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contacts>
+    <contact>
+        <type>address</type>
+        <icon>fas fa-map-marker-alt</icon>
+        <value>Минск, Свердлова 13А</value>
+    </contact>
+    <contact>
+        <type>phone</type>
+        <icon>fas fa-phone</icon>
+        <value>+375 29 140 5781</value>
+    </contact>
+    <contact>
+        <type>email</type>
+        <icon>fas fa-envelope</icon>
+        <value>silent.casino@mail.ru</value>
+    </contact>
+    <contact>
+        <type>support</type>
+        <icon>fas fa-clock</icon>
+        <value>Поддержка доступна 24/7</value>
+    </contact>
+</contacts> 

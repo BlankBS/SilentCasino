@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let playerHand = [];
     let gameInProgress = false;
 
-    // Initialize the game
     function initializeGame() {
         deck = createDeck();
         dealerHand = [];
@@ -27,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateUI();
     }
 
-    // Create a deck of cards
     function createDeck() {
         const suits = ['hearts', 'diamonds', 'clubs', 'spades'];
         const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
@@ -42,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return shuffleDeck(deck);
     }
 
-    // Shuffle the deck
     function shuffleDeck(deck) {
         for (let i = deck.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -51,12 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return deck;
     }
 
-    // Deal a card
     function dealCard() {
         return deck.pop();
     }
 
-    // Calculate hand value
     function calculateHandValue(hand) {
         let value = 0;
         let aces = 0;
@@ -82,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return value;
     }
 
-    // Update scores display
     function updateScores() {
         if (gameInProgress) {
             dealerScoreElement.textContent = '?';
@@ -92,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         playerScoreElement.textContent = calculateHandValue(playerHand);
     }
 
-    // Start a new round
     function startRound() {
         if (gameInProgress) return;
 
@@ -111,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.playerBalance -= betAmount;
         updateBalance();
 
-        // Create new deck and deal cards
         deck = createDeck();
         dealerHand = [dealCard(), dealCard()];
         playerHand = [dealCard(), dealCard()];
@@ -121,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
         checkBlackjack();
     }
 
-    // Player hits
     function hit() {
         if (!gameInProgress) return;
 
@@ -133,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Player stands
     function stand() {
         if (!gameInProgress) return;
 
@@ -145,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
         determineWinner();
     }
 
-    // Player doubles
     function double() {
         if (!gameInProgress || playerHand.length !== 2) return;
 
@@ -164,7 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Check for blackjack
     function checkBlackjack() {
         const playerValue = calculateHandValue(playerHand);
         const dealerValue = calculateHandValue(dealerHand);
@@ -180,7 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Determine the winner
     function determineWinner() {
         const playerValue = calculateHandValue(playerHand);
         const dealerValue = calculateHandValue(dealerHand);
@@ -196,19 +183,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Update balance display
     function updateBalance() {
         window.updateAllBalances();
     }
 
-    // Show balance update animation
     function showBalanceUpdate(amount, isPositive) {
-        // Create animation for betting panel
         const updateElement = document.createElement('div');
         updateElement.className = `balance-update ${isPositive ? 'positive' : 'negative'}`;
         updateElement.textContent = `${isPositive ? '+' : '-'}${amount}`;
         
-        // Position the element next to the betting panel balance
         const balanceRect = balanceElement.getBoundingClientRect();
         updateElement.style.left = `${balanceRect.right + 10}px`;
         updateElement.style.top = `${balanceRect.top}px`;
@@ -217,12 +200,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         document.body.appendChild(updateElement);
 
-        // Create animation for header
         const headerUpdateElement = document.createElement('div');
         headerUpdateElement.className = `balance-update ${isPositive ? 'positive' : 'negative'}`;
         headerUpdateElement.textContent = `${isPositive ? '+' : '-'}${amount}`;
         
-        // Position the element next to the header balance
         const headerBalanceRect = headerBalanceElement.getBoundingClientRect();
         const headerRect = document.querySelector('.header').getBoundingClientRect();
         headerUpdateElement.style.left = `${headerBalanceRect.right + 10}px`;
@@ -232,14 +213,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         document.body.appendChild(headerUpdateElement);
 
-        // Remove both elements after animation completes
         setTimeout(() => {
             updateElement.remove();
             headerUpdateElement.remove();
         }, 1500);
     }
 
-    // End the game
     function endGame(result, multiplier = 1) {
         gameInProgress = false;
         
@@ -258,18 +237,14 @@ document.addEventListener('DOMContentLoaded', () => {
         updateUI();
     }
 
-    // Update UI
     function updateUI() {
-        // Clear previous cards
         dealerCardsElement.innerHTML = '';
         playerCardsElement.innerHTML = '';
 
-        // Show dealer's cards
         dealerHand.forEach((card, index) => {
             const cardElement = document.createElement('div');
             cardElement.className = 'card';
             
-            // First card is hidden only during the game
             if (index === 0 && gameInProgress) {
                 cardElement.style.backgroundImage = 'url(assets/cards/back.png)';
             } else {
@@ -279,7 +254,6 @@ document.addEventListener('DOMContentLoaded', () => {
             dealerCardsElement.appendChild(cardElement);
         });
 
-        // Show player's cards
         playerHand.forEach(card => {
             const cardElement = document.createElement('div');
             cardElement.className = 'card';
@@ -287,10 +261,8 @@ document.addEventListener('DOMContentLoaded', () => {
             playerCardsElement.appendChild(cardElement);
         });
 
-        // Update scores
         updateScores();
 
-        // Update button states
         hitButton.disabled = !gameInProgress;
         standButton.disabled = !gameInProgress;
         doubleButton.disabled = !gameInProgress || playerHand.length !== 2 || currentBet * 2 > window.playerBalance;
@@ -298,13 +270,11 @@ document.addEventListener('DOMContentLoaded', () => {
         betAmountInput.disabled = gameInProgress;
     }
 
-    // Event listeners
     placeBetButton.addEventListener('click', startRound);
     hitButton.addEventListener('click', hit);
     standButton.addEventListener('click', stand);
     doubleButton.addEventListener('click', double);
 
-    // Quick bet buttons
     const quickBetButtons = document.querySelectorAll('.quick-bet');
     quickBetButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -314,6 +284,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initialize the game
     initializeGame();
 }); 

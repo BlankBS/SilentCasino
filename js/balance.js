@@ -1,7 +1,5 @@
-// Balance management
 window.playerBalance = 1000;
 
-// Update all balance displays
 window.updateAllBalances = function() {
     const balanceElements = document.querySelectorAll('#balance, #header-balance');
     balanceElements.forEach(element => {
@@ -9,7 +7,6 @@ window.updateAllBalances = function() {
     });
 }
 
-// Show balance update animation
 window.showBalanceUpdate = function(amount, isPositive) {
     const balanceElements = document.querySelectorAll('#balance, #header-balance');
     
@@ -32,7 +29,6 @@ window.showBalanceUpdate = function(amount, isPositive) {
     });
 }
 
-// Initialize balance on page load
 document.addEventListener('DOMContentLoaded', () => {
     updateAllBalances();
 }); 

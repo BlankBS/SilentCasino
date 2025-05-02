@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuToggle.classList.toggle('active');
     });
 
-    // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.nav-links') && !e.target.closest('.mobile-menu-toggle')) {
             navLinks.classList.remove('active');
@@ -15,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Close mobile menu when clicking on a link
     const navItems = document.querySelectorAll('.nav-links a');
     navItems.forEach(item => {
         item.addEventListener('click', () => {

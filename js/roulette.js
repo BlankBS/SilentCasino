@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let balance = 1000;
     let currentBet = 0;
 
-    // Initialize betting table
     function initializeBettingTable() {
         const numbers = Array.from({length: 37}, (_, i) => i); // 0-36
         const colors = {
@@ -78,6 +77,5 @@ document.addEventListener('DOMContentLoaded', () => {
         resultElement.textContent = message;
     }
 
-    // Initialize the game
     initializeBettingTable();
 }); 
