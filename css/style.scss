@@ -50,7 +50,6 @@
     }
 }
 
-// Mobile menu styles
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
@@ -88,7 +87,6 @@
     }
 }
 
-// Media queries for mobile responsiveness
 @media (max-width: 768px) {
     .mobile-menu-toggle {
         display: flex;
