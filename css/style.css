@@ -20,6 +20,7 @@ body {
   top: 0;
   z-index: 1000;
   border-bottom: 2px solid #9d00ff;
+  height: 80px;
 }
 
 .nav {
@@ -29,6 +30,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
 }
 
 .logo a {
@@ -102,6 +104,114 @@ body {
   text-shadow: 0 0 2px #ffd700;
 }
 
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  z-index: 1000;
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+.mobile-menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(45deg, #00ffff, #ff00ff);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+  transform-origin: center;
+  margin: 0;
+}
+.mobile-menu-toggle:hover span {
+  background: linear-gradient(45deg, #ff00ff, #00ffff);
+  box-shadow: 0 0 8px rgba(255, 0, 255, 0.7);
+}
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+  background: #ff00ff;
+}
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+  background: #ff00ff;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+    height: 100%;
+  }
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  .nav-links {
+    position: fixed;
+    top: 80px;
+    right: -100%;
+    width: 70%;
+    height: calc(100vh - 80px);
+    background: rgba(13, 17, 23, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transition: right 0.3s ease;
+    z-index: 999;
+    padding: 2rem;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+  }
+  .nav-links.active {
+    right: 0;
+  }
+  .nav-links li {
+    margin: 1.5rem 0;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
+  }
+  .nav-links li:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  .nav-links li:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+  .nav-links li:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+  .nav-links li:nth-child(4) {
+    transition-delay: 0.4s;
+  }
+  .nav-links li:nth-child(5) {
+    transition-delay: 0.5s;
+  }
+  .nav-links.active li {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .nav-links a {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+  }
+  .nav-links .header-balance {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+  }
+}
 .hero {
   height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../assets/hero-bg.jpg");
@@ -633,309 +743,453 @@ body {
 
 .game-layout {
   display: flex;
+  flex-direction: column;
   gap: 2rem;
-  width: 100%;
+  padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
   min-height: calc(100vh - 200px);
   margin-top: 80px;
+  position: relative;
+  z-index: 1;
 }
-
-.game-area {
-  flex: 3;
-  background: rgba(10, 10, 10, 0.2);
-  border-radius: 15px;
-  padding: 2rem;
-  border: 1px solid #9d00ff;
-  box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
-  min-height: 500px;
+.game-layout .game-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+.game-layout .game-container .game-area {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-}
-.game-area .dealer-hand, .game-area .player-hand {
-  margin-bottom: 2rem;
+  gap: 2rem;
+  padding: 2rem;
   background: rgba(10, 10, 10, 0.3);
-  border-radius: 15px;
-  padding: 1.5rem;
   border: 1px solid rgba(255, 0, 255, 0.2);
+  border-radius: 15px;
   box-shadow: 0 0 20px rgba(255, 0, 255, 0.1);
 }
-.game-area .dealer-hand h3, .game-area .player-hand h3 {
-  color: #ffffff;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(255, 0, 255, 0.2);
-}
-.game-area .dealer-hand h3 span, .game-area .player-hand h3 span {
-  font-size: 1.2rem;
-  color: #ffd700;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 0.2rem 0.5rem;
-  border-radius: 5px;
-  margin-left: 1rem;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
-}
-.game-area .dealer-hand .cards-container, .game-area .player-hand .cards-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 1rem;
-  min-height: 200px;
-  background: rgba(10, 10, 10, 0.2);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 0, 255, 0.1);
-}
-.game-area .cards-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 1rem;
-}
-.game-area .card {
-  width: 120px;
-  height: 180px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 10px;
-  margin: 0.5rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease;
-}
-.game-area .card:hover {
-  transform: translateY(-10px);
-}
-
-.betting-panel {
-  flex: 1;
-  background: rgba(10, 10, 10, 0.2);
-  padding: 2rem;
-  border-radius: 15px;
-  border: 1px solid #9d00ff;
-  box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+.game-layout .game-container .betting-panel {
+  width: 350px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  min-width: 250px;
-  height: -moz-fit-content;
-  height: fit-content;
+  padding: 2rem;
+  background: rgba(10, 10, 10, 0.3);
+  border: 1px solid rgba(255, 0, 255, 0.2);
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.1);
 }
-.betting-panel .balance {
-  font-size: 1.5rem;
-  color: #ffffff;
+.game-layout .game-controls {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(10, 10, 10, 0.2);
-  padding: 0.8rem 1.2rem;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 0, 255, 0.3);
-  box-shadow: 0 0 10px rgba(255, 0, 255, 0.1);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-.betting-panel .balance span:first-child {
-  color: #ff00ff;
+.game-layout .game-controls button {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  min-width: 120px;
+  background: rgba(10, 10, 10, 0.2);
+  color: #ffffff;
+  border: 1px solid rgba(255, 0, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
   font-weight: bold;
-  text-shadow: 0 0 2px #ff00ff;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.1);
+  text-transform: uppercase;
   letter-spacing: 1px;
 }
-.betting-panel .balance #balance {
-  font-weight: bold;
-  color: #ffd700;
-  text-shadow: 0 0 2px #ffd700;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
+.game-layout .game-controls button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: #ff00ff;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+  background: rgba(10, 10, 10, 0.3);
 }
-.betting-panel .balance #balance::after {
-  content: "$";
-  color: #ffd700;
-  text-shadow: 0 0 2px #ffd700;
+.game-layout .game-controls button:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0 0 5px rgba(255, 0, 255, 0.2);
 }
-.betting-panel .betting-area {
+.game-layout .game-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.game-layout .game-controls button#hit {
+  background: linear-gradient(45deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+}
+.game-layout .game-controls button#hit:hover:not(:disabled) {
+  background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.3));
+}
+.game-layout .game-controls button#stand {
+  background: linear-gradient(45deg, rgba(255, 0, 255, 0.2), rgba(157, 0, 255, 0.2));
+}
+.game-layout .game-controls button#stand:hover:not(:disabled) {
+  background: linear-gradient(45deg, rgba(255, 0, 255, 0.3), rgba(157, 0, 255, 0.3));
+}
+.game-layout .game-controls button#double {
+  background: linear-gradient(45deg, rgba(157, 0, 255, 0.2), rgba(0, 255, 255, 0.2));
+}
+.game-layout .game-controls button#double:hover:not(:disabled) {
+  background: linear-gradient(45deg, rgba(157, 0, 255, 0.3), rgba(0, 255, 255, 0.3));
+}
+.game-layout .game-controls button#higher {
+  background: linear-gradient(45deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+}
+.game-layout .game-controls button#higher:hover:not(:disabled) {
+  background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.3));
+}
+.game-layout .game-controls button#lower {
+  background: linear-gradient(45deg, rgba(255, 0, 255, 0.2), rgba(157, 0, 255, 0.2));
+}
+.game-layout .game-controls button#lower:hover:not(:disabled) {
+  background: linear-gradient(45deg, rgba(255, 0, 255, 0.3), rgba(157, 0, 255, 0.3));
+}
+.game-layout .betting-area {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   align-items: center;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
 }
-.betting-panel .betting-area .quick-bets {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: space-between;
+.game-layout .betting-area input {
   width: 100%;
-}
-.betting-panel .betting-area .quick-bets .quick-bet {
-  flex: 1;
+  max-width: 300px;
   padding: 0.8rem;
-  background: rgba(10, 10, 10, 0.3);
-  color: #ffffff;
+  font-size: 1.1rem;
+  background: rgba(10, 10, 10, 0.5);
   border: 1px solid rgba(255, 0, 255, 0.3);
   border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-.betting-panel .betting-area .quick-bets .quick-bet::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent 0%, rgba(255, 0, 255, 0.1) 50%, transparent 100%);
-  animation: rotate 20s linear infinite;
-  z-index: -1;
-}
-.betting-panel .betting-area .quick-bets .quick-bet:hover {
-  background: rgba(255, 0, 255, 0.2);
-  border-color: #ff00ff;
-  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
-  transform: translateY(-2px);
-}
-.betting-panel .betting-area .quick-bets .quick-bet:active {
-  transform: scale(0.98);
-}
-.betting-panel .betting-area .quick-bets .quick-bet:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none !important;
-  box-shadow: none !important;
-}
-.betting-panel .betting-area input {
-  width: 100%;
-  padding: 0.8rem 1.2rem;
-  background: rgba(10, 10, 10, 0.3);
-  border: 1px solid rgba(255, 0, 255, 0.3);
-  border-radius: 10px;
   color: #ffffff;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(255, 0, 255, 0.1);
+  text-align: center;
 }
-.betting-panel .betting-area input:focus {
+.game-layout .betting-area input:focus {
   outline: none;
   border-color: #ff00ff;
-  box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
 }
-.betting-panel .betting-area #place-bet {
-  width: 100%;
-  padding: 12px 24px;
-  background: rgba(10, 10, 10, 0.3);
-  color: #ffffff;
-  border: 1px solid rgba(255, 0, 255, 0.3);
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-.betting-panel .betting-area #place-bet::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent 0%, rgba(255, 0, 255, 0.1) 50%, transparent 100%);
-  animation: rotate 20s linear infinite;
-  z-index: -1;
-}
-.betting-panel .betting-area #place-bet:hover {
-  background: rgba(255, 0, 255, 0.2);
-  border-color: #ff00ff;
-  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
-  transform: translateY(-2px);
-}
-.betting-panel .betting-area #place-bet:active {
-  transform: scale(0.98);
-}
-.betting-panel .betting-area #place-bet:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none !important;
-  box-shadow: none !important;
-}
-.betting-panel .game-controls {
+.game-layout .betting-area .quick-bets {
   display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 20px;
+  gap: 0.5rem;
   flex-wrap: wrap;
-  width: 100%;
+  justify-content: center;
 }
-.betting-panel .game-controls button {
-  padding: 10px 20px;
-  border: none;
+.game-layout .betting-area .quick-bets button {
+  padding: 0.5rem 1rem;
+  min-width: 60px;
+  background: rgba(10, 10, 10, 0.2);
+  color: #ffffff;
+  border: 1px solid rgba(255, 0, 255, 0.3);
   border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
   cursor: pointer;
   transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  white-space: nowrap;
-  min-width: 90px;
-  max-width: 110px;
-  text-align: center;
-  flex: 1;
-  background: rgba(10, 10, 10, 0.3);
-  border: 1px solid rgba(255, 0, 255, 0.3);
-  color: #ffffff;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.1);
 }
-.betting-panel .game-controls button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, transparent 0%, rgba(255, 0, 255, 0.1) 50%, transparent 100%);
-  animation: rotate 20s linear infinite;
-  z-index: -1;
-}
-.betting-panel .game-controls button#hit:hover, .betting-panel .game-controls button#stand:hover, .betting-panel .game-controls button#double:hover {
-  background: rgba(255, 0, 255, 0.2);
+.game-layout .betting-area .quick-bets button:hover:not(:disabled) {
+  transform: translateY(-2px);
   border-color: #ff00ff;
   box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+  background: rgba(10, 10, 10, 0.3);
 }
-.betting-panel .game-controls button#hit:active, .betting-panel .game-controls button#stand:active, .betting-panel .game-controls button#double:active {
-  transform: scale(0.98);
+.game-layout .betting-area .quick-bets button:active:not(:disabled) {
+  transform: translateY(1px);
 }
-.betting-panel .game-controls button:disabled {
+.game-layout .betting-area .quick-bets button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  transform: none !important;
-  box-shadow: none !important;
+}
+.game-layout .betting-area button#place-bet {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  min-width: 200px;
+  background: linear-gradient(45deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+  color: #ffffff;
+  border: 1px solid rgba(255, 0, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 1rem;
+}
+.game-layout .betting-area button#place-bet:hover:not(:disabled) {
+  transform: translateY(-2px);
+  border-color: #ff00ff;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+  background: linear-gradient(45deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.3));
+}
+.game-layout .betting-area button#place-bet:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0 0 5px rgba(255, 0, 255, 0.2);
+}
+.game-layout .betting-area button#place-bet:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
+@media (max-width: 768px) {
+  .game-layout {
+    padding: 1rem;
+    margin-top: 100px;
+    min-height: calc(100vh - 180px);
+  }
+  .game-layout .game-container {
+    flex-direction: column;
+  }
+  .game-layout .game-area {
+    padding: 1rem;
+    width: 100%;
+    margin: 0;
+  }
+  .game-layout .betting-panel {
+    width: 100%;
+    padding: 1rem;
+  }
+  .game-layout .game-controls button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    min-width: 100px;
+  }
+  .game-layout .betting-area input {
+    max-width: 100%;
+  }
+  .game-layout .betting-area .quick-bets {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .game-layout .betting-area .quick-bets button {
+    flex: 1;
+    min-width: 0;
+  }
+  .game-layout .blackjack .dealer-hand,
+  .game-layout .blackjack .player-hand {
+    width: 100%;
+  }
+  .game-layout .blackjack .dealer-hand .cards-container,
+  .game-layout .blackjack .player-hand .cards-container {
+    width: 100%;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+}
+@media (max-width: 480px) {
+  .game-layout {
+    padding: 0.5rem;
+    margin-top: 90px;
+    min-height: calc(100vh - 160px);
+  }
+  .game-layout .game-area {
+    padding: 0.8rem;
+    width: 100%;
+    margin: 0;
+  }
+  .game-layout .betting-panel {
+    padding: 0.8rem;
+  }
+  .game-layout .game-controls {
+    flex-direction: column;
+    width: 100%;
+  }
+  .game-layout .game-controls button {
+    width: 100%;
+  }
+  .game-layout .betting-area .quick-bets {
+    gap: 0.3rem;
+  }
+  .game-layout .betting-area .quick-bets button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  .game-layout .blackjack .dealer-hand .cards-container,
+  .game-layout .blackjack .player-hand .cards-container {
+    gap: 0.3rem;
+  }
+}
+.blackjack .dealer-hand,
+.blackjack .player-hand {
+  text-align: center;
+}
+.blackjack .dealer-hand h3,
+.blackjack .player-hand h3 {
+  color: #ff00ff;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 3px #ff00ff;
+}
+.blackjack .dealer-hand .cards-container,
+.blackjack .player-hand .cards-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: 150px;
+}
+.blackjack .dealer-hand .cards-container .card,
+.blackjack .player-hand .cards-container .card {
+  width: 120px;
+  height: 168px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+.blackjack .dealer-hand .cards-container .card:hover,
+.blackjack .player-hand .cards-container .card:hover {
+  transform: translateY(-5px);
+}
+
+.slots-machine {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.slots-machine .reel {
+  width: 100px;
+  height: 100px;
+  background: rgba(10, 10, 10, 0.5);
+  border: 2px solid rgba(255, 0, 255, 0.3);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
+}
+
+.higher-lower .game-container {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.higher-lower .game-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: rgba(10, 10, 10, 0.3);
+  border: 1px solid rgba(255, 0, 255, 0.2);
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.1);
+}
+.higher-lower .betting-panel {
+  padding: 2rem;
+  background: rgba(10, 10, 10, 0.3);
+  border: 1px solid rgba(255, 0, 255, 0.2);
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.1);
+}
+.higher-lower .cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+.higher-lower .cards-container .card {
+  width: 150px;
+  height: 200px;
+  background: rgba(10, 10, 10, 0.5);
+  border: 2px solid rgba(255, 0, 255, 0.3);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
+}
+.higher-lower .cards-container .card img {
+  max-width: 100%;
+  max-height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.higher-lower .game-rules {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .higher-lower .game-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .higher-lower .game-area {
+    padding: 1rem;
+    width: 100%;
+  }
+  .higher-lower .betting-panel {
+    padding: 1rem;
+    width: 100%;
+  }
+  .higher-lower .cards-container {
+    gap: 1rem;
+  }
+  .higher-lower .cards-container .card {
+    width: 120px;
+    height: 160px;
+  }
+  .higher-lower .game-controls {
+    flex-direction: column;
+    width: 100%;
+  }
+  .higher-lower .game-controls button {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+  .higher-lower .betting-area .quick-bets {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .higher-lower .betting-area .quick-bets button {
+    flex: 1;
+    min-width: 0;
+  }
+  .higher-lower .betting-area input {
+    width: 100%;
+  }
+  .higher-lower .betting-area #place-bet {
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .higher-lower .game-area {
+    padding: 0.8rem;
+  }
+  .higher-lower .betting-panel {
+    padding: 0.8rem;
+  }
+  .higher-lower .cards-container {
+    gap: 0.5rem;
+  }
+  .higher-lower .cards-container .card {
+    width: 100px;
+    height: 140px;
+  }
+  .higher-lower .game-controls button {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+  .higher-lower .betting-area .quick-bets button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  .higher-lower .betting-area input {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+  .higher-lower .betting-area #place-bet {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+}
 .slots-machine {
   display: flex;
   justify-content: center;
@@ -1228,6 +1482,69 @@ body {
   display: none;
 }
 
+@media (max-width: 768px) {
+  .slots-machine {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+  .slots-machine .reel {
+    width: 100px;
+    height: 100px;
+    font-size: 3rem;
+  }
+  .result-message {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    padding: 0.8rem;
+  }
+  .game-rules {
+    padding: 1rem;
+    margin: 20px auto;
+  }
+  .game-rules h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .game-rules .rules-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .game-rules .rule-block {
+    padding: 1rem;
+  }
+  .game-rules .rule-block .rule-icon {
+    font-size: 1.5rem;
+  }
+  .game-rules .rule-block h4 {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 480px) {
+  .slots-machine .reel {
+    width: 80px;
+    height: 80px;
+    font-size: 2.5rem;
+  }
+  .result-message {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
+  .game-rules h3 {
+    font-size: 1.3rem;
+  }
+  .game-rules .rule-block .rule-icon {
+    font-size: 1.3rem;
+  }
+  .game-rules .rule-block h4 {
+    font-size: 1rem;
+  }
+  .game-rules .rule-block p, .game-rules .rule-block ul {
+    font-size: 0.9rem;
+  }
+}
 .background-animation {
   position: fixed;
   top: 0;
@@ -1658,35 +1975,6 @@ body {
 
 .mobile-menu-toggle {
   display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 21px;
-  cursor: pointer;
-  z-index: 1000;
-  position: relative;
-  margin-top: 0.5rem;
-  background: transparent;
-  border: none;
-  padding: 0;
-}
-.mobile-menu-toggle span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background: linear-gradient(45deg, #00ffff, #ff00ff);
-  border-radius: 3px;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
-}
-.mobile-menu-toggle.active span:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
-}
-.mobile-menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-.mobile-menu-toggle.active span:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
 }
 
 @media (max-width: 768px) {
@@ -1694,65 +1982,10 @@ body {
     display: flex;
   }
   .nav {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-  }
-  .nav .logo {
-    margin-right: 0;
-  }
-  .nav-links {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 70%;
-    height: 100vh;
-    background: rgba(13, 17, 23, 0.95);
-    -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    transition: right 0.3s ease;
-    z-index: 999;
-    padding: 2rem;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
-  }
-  .nav-links.active {
-    right: 0;
-  }
-  .nav-links li {
-    margin: 1.5rem 0;
-    opacity: 0;
-    transform: translateX(20px);
-    transition: all 0.3s ease;
-  }
-  .nav-links li:nth-child(1) {
-    transition-delay: 0.1s;
-  }
-  .nav-links li:nth-child(2) {
-    transition-delay: 0.2s;
-  }
-  .nav-links li:nth-child(3) {
-    transition-delay: 0.3s;
-  }
-  .nav-links li:nth-child(4) {
-    transition-delay: 0.4s;
-  }
-  .nav-links li:nth-child(5) {
-    transition-delay: 0.5s;
-  }
-  .nav-links.active li {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  .nav-links a {
-    font-size: 1.2rem;
-    padding: 0.5rem 1rem;
-  }
-  .header-balance {
-    margin-top: 2rem;
-    font-size: 1.2rem;
+    padding: 1rem;
+    height: 100%;
   }
   .logo a {
     gap: 0.8rem;

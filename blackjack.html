@@ -36,38 +36,40 @@
 
     <main>
         <div class="game-layout">
-            <div class="game-area">
-                <div class="dealer-hand">
-                    <h3>Рука дилера <span id="dealer-score">?</span></h3>
-                    <div class="cards-container" id="dealer-cards"></div>
-                </div>
-
-                <div class="player-hand">
-                    <h3>Ваша рука <span id="player-score">0</span></h3>
-                    <div class="cards-container" id="player-cards"></div>
-                </div>
-            </div>
-
-            <div class="betting-panel">
-                <div class="balance">
-                    <span>Баланс</span>
-                    <span id="balance">1000</span>
-                </div>
-
-                <div class="betting-area">
-                    <input type="number" id="bet-amount" placeholder="Введите сумму ставки" min="1">
-                    <div class="quick-bets">
-                        <button class="quick-bet" data-amount="10">10</button>
-                        <button class="quick-bet" data-amount="100">100</button>
-                        <button class="quick-bet" data-amount="1000">1000</button>
+            <div class="game-container">
+                <div class="game-area blackjack">
+                    <div class="dealer-hand">
+                        <h3>Рука дилера <span id="dealer-score">?</span></h3>
+                        <div class="cards-container" id="dealer-cards"></div>
                     </div>
-                    <button id="place-bet">Сделать ставку</button>
+
+                    <div class="player-hand">
+                        <h3>Ваша рука <span id="player-score">0</span></h3>
+                        <div class="cards-container" id="player-cards"></div>
+                    </div>
                 </div>
 
-                <div class="game-controls">
-                    <button id="hit">Еще</button>
-                    <button id="stand">Хватит</button>
-                    <button id="double">Удвоить</button>
+                <div class="betting-panel">
+                    <div class="balance">
+                        <span>Баланс</span>
+                        <span id="balance">1000</span>
+                    </div>
+
+                    <div class="betting-area">
+                        <input type="number" id="bet-amount" placeholder="Введите сумму ставки" min="1">
+                        <div class="quick-bets">
+                            <button class="quick-bet" data-amount="10">10</button>
+                            <button class="quick-bet" data-amount="100">100</button>
+                            <button class="quick-bet" data-amount="1000">1000</button>
+                        </div>
+                        <button id="place-bet">Сделать ставку</button>
+                    </div>
+
+                    <div class="game-controls">
+                        <button id="hit">Еще</button>
+                        <button id="stand">Хватит</button>
+                        <button id="double">Удвоить</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -154,5 +156,6 @@
 
     <script src="js/balance.js"></script>
     <script src="js/blackjack.js"></script>
+    <script src="js/mobile-menu.js"></script>
 </body>
 </html> 

@@ -342,4 +342,89 @@
             display: none;
         }
     }
+}
+
+// Добавляем медиа-запросы для адаптивности
+@media (max-width: 768px) {
+    .slots-machine {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        margin: 1rem 0;
+
+        .reel {
+            width: 100px;
+            height: 100px;
+            font-size: 3rem;
+        }
+    }
+
+    .result-message {
+        font-size: 1.2rem;
+        margin-top: 1rem;
+        padding: 0.8rem;
+    }
+
+    .game-rules {
+        padding: 1rem;
+        margin: 20px auto;
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .rules-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .rule-block {
+            padding: 1rem;
+
+            .rule-icon {
+                font-size: 1.5rem;
+            }
+
+            h4 {
+                font-size: 1.1rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .slots-machine {
+        .reel {
+            width: 80px;
+            height: 80px;
+            font-size: 2.5rem;
+        }
+    }
+
+    .result-message {
+        font-size: 1rem;
+        padding: 0.6rem;
+    }
+
+    .game-rules {
+        h3 {
+            font-size: 1.3rem;
+        }
+
+        .rule-block {
+            .rule-icon {
+                font-size: 1.3rem;
+            }
+
+            h4 {
+                font-size: 1rem;
+            }
+
+            p, ul {
+                font-size: 0.9rem;
+            }
+        }
+    }
 } 

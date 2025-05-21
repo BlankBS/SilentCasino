@@ -2,141 +2,119 @@
 
 .game-layout {
     display: flex;
+    flex-direction: column;
     gap: 2rem;
-    width: 100%;
+    padding: 2rem;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem;
     min-height: calc(100vh - 200px);
     margin-top: 80px;
-}
+    position: relative;
+    z-index: 1;
 
-.game-area {
-    flex: 3;
-    background: rgba($primary-color, 0.2);
-    border-radius: 15px;
-    padding: 2rem;
-    border: 1px solid $accent-color;
-    box-shadow: 0 0 30px rgba($neon-purple, 0.2);
-    backdrop-filter: blur(10px);
-    min-height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    .game-container {
+        display: flex;
+        gap: 2rem;
+        align-items: flex-start;
 
-    .dealer-hand, .player-hand {
-        margin-bottom: 2rem;
-        background: rgba($primary-color, 0.3);
-        border-radius: 15px;
-        padding: 1.5rem;
-        border: 1px solid rgba($neon-purple, 0.2);
-        box-shadow: 0 0 20px rgba($neon-purple, 0.1);
-
-        h3 {
-            color: $text-color;
-            margin-bottom: 1rem;
+        .game-area {
+            flex: 1;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid rgba($neon-purple, 0.2);
-
-            span {
-                font-size: 1.2rem;
-                color: #ffd700;
-                background: rgba(0, 0, 0, 0.5);
-                padding: 0.2rem 0.5rem;
-                border-radius: 5px;
-                margin-left: 1rem;
-                box-shadow: 0 0 10px rgba(#ffd700, 0.2);
-            }
+            flex-direction: column;
+            gap: 2rem;
+            padding: 2rem;
+            background: rgba($primary-color, 0.3);
+            border: 1px solid rgba($neon-purple, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba($neon-purple, 0.1);
         }
 
-        .cards-container {
+        .betting-panel {
+            width: 350px;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            padding: 1rem;
-            min-height: 200px;
-            background: rgba($primary-color, 0.2);
-            border-radius: 10px;
-            border: 1px solid rgba($neon-purple, 0.1);
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: rgba($primary-color, 0.3);
+            border: 1px solid rgba($neon-purple, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba($neon-purple, 0.1);
         }
     }
 
-    .cards-container {
+    .game-controls {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
         gap: 1rem;
-        padding: 1rem;
-    }
+        justify-content: center;
+        flex-wrap: wrap;
 
-    .card {
-        width: 120px;
-        height: 180px;
-        background-size: cover;
-        background-position: center;
-        border-radius: 10px;
-        margin: 0.5rem;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        transition: transform 0.3s ease;
-
-        &:hover {
-            transform: translateY(-10px);
-        }
-    }
-}
-
-.betting-panel {
-    flex: 1;
-    background: rgba($primary-color, 0.2);
-    padding: 2rem;
-    border-radius: 15px;
-    border: 1px solid $accent-color;
-    box-shadow: 0 0 30px rgba($neon-purple, 0.2);
-    backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    min-width: 250px;
-    height: fit-content;
-
-    .balance {
-        font-size: 1.5rem;
-        color: $text-color;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background: rgba($primary-color, 0.2);
-        padding: 0.8rem 1.2rem;
-        border-radius: 10px;
-        border: 1px solid rgba($neon-purple, 0.3);
-        box-shadow: 0 0 10px rgba($neon-purple, 0.1);
-        backdrop-filter: blur(5px);
-
-        span:first-child {
-            color: $neon-purple;
+        button {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            min-width: 120px;
+            background: rgba($primary-color, 0.2);
+            color: $text-color;
+            border: 1px solid rgba($neon-purple, 0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
             font-weight: bold;
-            text-shadow: 0 0 2px $neon-purple;
+            box-shadow: 0 0 10px rgba($neon-purple, 0.1);
+            text-transform: uppercase;
             letter-spacing: 1px;
-        }
 
-        #balance {
-            font-weight: bold;
-            color: #ffd700;
-            text-shadow: 0 0 2px #ffd700;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
+            &:hover:not(:disabled) {
+                transform: translateY(-2px);
+                border-color: $neon-purple;
+                box-shadow: 0 0 15px rgba($neon-purple, 0.3);
+                background: rgba($primary-color, 0.3);
+            }
 
-            &::after {
-                content: '$';
-                color: #ffd700;
-                text-shadow: 0 0 2px #ffd700;
+            &:active:not(:disabled) {
+                transform: translateY(1px);
+                box-shadow: 0 0 5px rgba($neon-purple, 0.2);
+            }
+
+            &:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+                transform: none;
+                box-shadow: none;
+            }
+
+            &#hit {
+                background: linear-gradient(45deg, rgba($neon-blue, 0.2), rgba($neon-purple, 0.2));
+                &:hover:not(:disabled) {
+                    background: linear-gradient(45deg, rgba($neon-blue, 0.3), rgba($neon-purple, 0.3));
+                }
+            }
+
+            &#stand {
+                background: linear-gradient(45deg, rgba($neon-purple, 0.2), rgba($accent-color, 0.2));
+                &:hover:not(:disabled) {
+                    background: linear-gradient(45deg, rgba($neon-purple, 0.3), rgba($accent-color, 0.3));
+                }
+            }
+
+            &#double {
+                background: linear-gradient(45deg, rgba($accent-color, 0.2), rgba($neon-blue, 0.2));
+                &:hover:not(:disabled) {
+                    background: linear-gradient(45deg, rgba($accent-color, 0.3), rgba($neon-blue, 0.3));
+                }
+            }
+
+            &#higher {
+                background: linear-gradient(45deg, rgba($neon-blue, 0.2), rgba($neon-purple, 0.2));
+                &:hover:not(:disabled) {
+                    background: linear-gradient(45deg, rgba($neon-blue, 0.3), rgba($neon-purple, 0.3));
+                }
+            }
+
+            &#lower {
+                background: linear-gradient(45deg, rgba($neon-purple, 0.2), rgba($accent-color, 0.2));
+                &:hover:not(:disabled) {
+                    background: linear-gradient(45deg, rgba($neon-purple, 0.3), rgba($accent-color, 0.3));
+                }
             }
         }
     }
@@ -146,204 +124,428 @@
         flex-direction: column;
         gap: 1rem;
         align-items: center;
-        width: 100%;
-        max-width: 400px;
-        margin: 0 auto;
+
+        input {
+            width: 100%;
+            max-width: 300px;
+            padding: 0.8rem;
+            font-size: 1.1rem;
+            background: rgba($primary-color, 0.5);
+            border: 1px solid rgba($neon-purple, 0.3);
+            border-radius: 8px;
+            color: $text-color;
+            text-align: center;
+
+            &:focus {
+                outline: none;
+                border-color: $neon-purple;
+                box-shadow: 0 0 10px rgba($neon-purple, 0.3);
+            }
+        }
 
         .quick-bets {
             display: flex;
             gap: 0.5rem;
-            justify-content: space-between;
-            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
 
-            .quick-bet {
-                flex: 1;
-                padding: 0.8rem;
-                background: rgba($primary-color, 0.3);
+            button {
+                padding: 0.5rem 1rem;
+                min-width: 60px;
+                background: rgba($primary-color, 0.2);
                 color: $text-color;
                 border: 1px solid rgba($neon-purple, 0.3);
-                border-radius: $border-radius-md;
+                border-radius: 8px;
                 cursor: pointer;
-                font-size: 1rem;
-                font-weight: 600;
                 transition: all 0.3s ease;
-                position: relative;
-                overflow: hidden;
-                z-index: 1;
+                font-weight: bold;
+                box-shadow: 0 0 10px rgba($neon-purple, 0.1);
 
-                &::before {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background: linear-gradient(
-                        45deg,
-                        transparent 0%,
-                        rgba($neon-purple, 0.1) 50%,
-                        transparent 100%
-                    );
-                    animation: rotate 20s linear infinite;
-                    z-index: -1;
-                }
-
-                &:hover {
-                    background: rgba($neon-purple, 0.2);
+                &:hover:not(:disabled) {
+                    transform: translateY(-2px);
                     border-color: $neon-purple;
                     box-shadow: 0 0 15px rgba($neon-purple, 0.3);
-                    transform: translateY(-2px);
+                    background: rgba($primary-color, 0.3);
                 }
 
-                &:active {
-                    transform: scale(0.98);
+                &:active:not(:disabled) {
+                    transform: translateY(1px);
                 }
 
                 &:disabled {
                     opacity: 0.5;
                     cursor: not-allowed;
-                    transform: none !important;
-                    box-shadow: none !important;
                 }
             }
         }
 
-        input {
-            width: 100%;
-            padding: 0.8rem 1.2rem;
-            background: rgba($primary-color, 0.3);
-            border: 1px solid rgba($neon-purple, 0.3);
-            border-radius: 10px;
-            color: $text-color;
-            font-size: 1rem;
-            @include transition;
-            box-shadow: 0 0 10px rgba($neon-purple, 0.1);
-
-            &:focus {
-                outline: none;
-                border-color: $neon-purple;
-                box-shadow: 0 0 20px rgba($neon-purple, 0.3);
-            }
-        }
-
-        #place-bet {
-            width: 100%;
-            padding: 12px 24px;
-            background: rgba($primary-color, 0.3);
-            color: $text-color;
-            border: 1px solid rgba($neon-purple, 0.3);
-            border-radius: $border-radius-md;
-            cursor: pointer;
-            font-weight: 600;
+        button#place-bet {
+            padding: 1rem 2rem;
             font-size: 1.1rem;
+            min-width: 200px;
+            background: linear-gradient(45deg, rgba($neon-blue, 0.2), rgba($neon-purple, 0.2));
+            color: $text-color;
+            border: 1px solid rgba($neon-purple, 0.3);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba($neon-purple, 0.1);
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
+            margin-top: 1rem;
 
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: linear-gradient(
-                    45deg,
-                    transparent 0%,
-                    rgba($neon-purple, 0.1) 50%,
-                    transparent 100%
-                );
-                animation: rotate 20s linear infinite;
-                z-index: -1;
-            }
-
-            &:hover {
-                background: rgba($neon-purple, 0.2);
+            &:hover:not(:disabled) {
+                transform: translateY(-2px);
                 border-color: $neon-purple;
                 box-shadow: 0 0 15px rgba($neon-purple, 0.3);
-                transform: translateY(-2px);
+                background: linear-gradient(45deg, rgba($neon-blue, 0.3), rgba($neon-purple, 0.3));
             }
 
-            &:active {
-                transform: scale(0.98);
+            &:active:not(:disabled) {
+                transform: translateY(1px);
+                box-shadow: 0 0 5px rgba($neon-purple, 0.2);
             }
 
             &:disabled {
                 opacity: 0.5;
                 cursor: not-allowed;
-                transform: none !important;
-                box-shadow: none !important;
+                transform: none;
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+    .game-layout {
+        padding: 1rem;
+        margin-top: 100px;
+        min-height: calc(100vh - 180px);
+
+        .game-container {
+            flex-direction: column;
+        }
+
+        .game-area {
+            padding: 1rem;
+            width: 100%;
+            margin: 0;
+        }
+
+        .betting-panel {
+            width: 100%;
+            padding: 1rem;
+        }
+
+        .game-controls {
+            button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+                min-width: 100px;
+            }
+        }
+
+        .betting-area {
+            input {
+                max-width: 100%;
+            }
+
+            .quick-bets {
+                width: 100%;
+                justify-content: space-between;
+
+                button {
+                    flex: 1;
+                    min-width: 0;
+                }
+            }
+        }
+
+        // Specific styles for Blackjack on mobile
+        .blackjack {
+            .dealer-hand,
+            .player-hand {
+                width: 100%;
+
+                .cards-container {
+                    width: 100%;
+                    justify-content: center;
+                    gap: 0.5rem;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .game-layout {
+        padding: 0.5rem;
+        margin-top: 90px;
+        min-height: calc(100vh - 160px);
+
+        .game-area {
+            padding: 0.8rem;
+            width: 100%;
+            margin: 0;
+        }
+
+        .betting-panel {
+            padding: 0.8rem;
+        }
+
+        .game-controls {
+            flex-direction: column;
+            width: 100%;
+
+            button {
+                width: 100%;
+            }
+        }
+
+        .betting-area {
+            .quick-bets {
+                gap: 0.3rem;
+
+                button {
+                    padding: 0.4rem 0.8rem;
+                    font-size: 0.9rem;
+                }
+            }
+        }
+
+        // Specific styles for Blackjack on small mobile
+        .blackjack {
+            .dealer-hand,
+            .player-hand {
+                .cards-container {
+                    gap: 0.3rem;
+                }
+            }
+        }
+    }
+}
+
+// Specific styles for Blackjack
+.blackjack {
+    .dealer-hand,
+    .player-hand {
+        text-align: center;
+
+        h3 {
+            color: $neon-purple;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 3px $neon-purple;
+        }
+
+        .cards-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            min-height: 150px;
+
+            .card {
+                width: 120px;
+                height: 168px;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                transition: transform 0.3s ease;
+
+                &:hover {
+                    transform: translateY(-5px);
+                }
+            }
+        }
+    }
+}
+
+// Specific styles for Slots
+.slots-machine {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+
+    .reel {
+        width: 100px;
+        height: 100px;
+        background: rgba($primary-color, 0.5);
+        border: 2px solid rgba($neon-purple, 0.3);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        box-shadow: 0 0 15px rgba($neon-purple, 0.2);
+    }
+}
+
+// Specific styles for Higher-Lower
+.higher-lower {
+    .game-container {
+        display: grid;
+        grid-template-columns: 1fr 350px;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .game-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        background: rgba($primary-color, 0.3);
+        border: 1px solid rgba($neon-purple, 0.2);
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba($neon-purple, 0.1);
+    }
+
+    .betting-panel {
+        padding: 2rem;
+        background: rgba($primary-color, 0.3);
+        border: 1px solid rgba($neon-purple, 0.2);
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba($neon-purple, 0.1);
+    }
+
+    .cards-container {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 2rem 0;
+
+        .card {
+            width: 150px;
+            height: 200px;
+            background: rgba($primary-color, 0.5);
+            border: 2px solid rgba($neon-purple, 0.3);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba($neon-purple, 0.2);
+
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: contain;
             }
         }
     }
 
-    .game-controls {
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-        margin-top: 20px;
-        flex-wrap: wrap;
+    .game-rules {
         width: 100%;
+        margin-top: 2rem;
+    }
+}
 
-        button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: $border-radius-md;
-            font-size: 1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            white-space: nowrap;
-            min-width: 90px;
-            max-width: 110px;
-            text-align: center;
-            flex: 1;
-            background: rgba($primary-color, 0.3);
-            border: 1px solid rgba($neon-purple, 0.3);
-            color: $text-color;
+// Responsive styles for game-specific elements
+@media (max-width: 768px) {
+    .higher-lower {
+        .game-container {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
 
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: linear-gradient(
-                    45deg,
-                    transparent 0%,
-                    rgba($neon-purple, 0.1) 50%,
-                    transparent 100%
-                );
-                animation: rotate 20s linear infinite;
-                z-index: -1;
+        .game-area {
+            padding: 1rem;
+            width: 100%;
+        }
+
+        .betting-panel {
+            padding: 1rem;
+            width: 100%;
+        }
+
+        .cards-container {
+            gap: 1rem;
+
+            .card {
+                width: 120px;
+                height: 160px;
+            }
+        }
+
+        .game-controls {
+            flex-direction: column;
+            width: 100%;
+
+            button {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+        }
+
+        .betting-area {
+            .quick-bets {
+                width: 100%;
+                justify-content: space-between;
+                gap: 0.5rem;
+
+                button {
+                    flex: 1;
+                    min-width: 0;
+                }
             }
 
-            &#hit, &#stand, &#double {
-                &:hover {
-                    background: rgba($neon-purple, 0.2);
-                    border-color: $neon-purple;
-                    box-shadow: 0 0 15px rgba($neon-purple, 0.3);
-                }
+            input {
+                width: 100%;
+            }
 
-                &:active {
-                    transform: scale(0.98);
+            #place-bet {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .higher-lower {
+        .game-area {
+            padding: 0.8rem;
+        }
+
+        .betting-panel {
+            padding: 0.8rem;
+        }
+
+        .cards-container {
+            gap: 0.5rem;
+
+            .card {
+                width: 100px;
+                height: 140px;
+            }
+        }
+
+        .game-controls {
+            button {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        .betting-area {
+            .quick-bets {
+                button {
+                    padding: 0.4rem 0.8rem;
+                    font-size: 0.9rem;
                 }
             }
 
-            &:disabled {
-                opacity: 0.5;
-                cursor: not-allowed;
-                transform: none !important;
-                box-shadow: none !important;
+            input {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            #place-bet {
+                padding: 0.8rem;
+                font-size: 0.9rem;
             }
         }
     }

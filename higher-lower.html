@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blackjack - SilentCasino</title>
+    <title>Higher or Lower - SilentCasino</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -35,53 +35,55 @@
     </header>
 
     <main>
-        <div class="game-layout">
-            <div class="game-area">
-                <div class="game-info">
-                    <div class="score">
-                        <span>Счет:</span>
-                        <span id="score">0</span>
+        <div class="game-layout higher-lower">
+            <div class="game-container">
+                <div class="game-area">
+                    <div class="game-info">
+                        <div class="score">
+                            <span>Счет:</span>
+                            <span id="score">0</span>
+                        </div>
+                        <div class="streak">
+                            <span>Серия:</span>
+                            <span id="streak">0</span>
+                        </div>
                     </div>
-                    <div class="streak">
-                        <span>Серия:</span>
-                        <span id="streak">0</span>
-                    </div>
-                </div>
 
-                <div class="cards-container">
-                    <div class="current-card">
-                        <div class="card">
-                            <img id="current-card-image" src="assets/cards/back.png" alt="Карта">
+                    <div class="cards-container">
+                        <div class="current-card">
+                            <div class="card">
+                                <img id="current-card-image" src="assets/cards/back.png" alt="Карта">
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="betting-panel">
-                <div class="balance">
-                    <span>Баланс</span>
-                    <span id="balance">1000</span>
-                </div>
-
-                <div class="betting-area">
-                    <input type="number" id="bet-amount" placeholder="Введите сумму ставки" min="1">
-                    <div class="quick-bets">
-                        <button class="quick-bet" data-amount="10">10</button>
-                        <button class="quick-bet" data-amount="100">100</button>
-                        <button class="quick-bet" data-amount="1000">1000</button>
+                <div class="betting-panel">
+                    <div class="balance">
+                        <span>Баланс</span>
+                        <span id="balance">1000</span>
                     </div>
-                    <button id="place-bet">Сделать ставку</button>
-                </div>
 
-                <div class="game-controls">
-                    <button id="higher" class="game-button" disabled>
-                        <i class="fas fa-arrow-up"></i>
-                        Выше
-                    </button>
-                    <button id="lower" class="game-button" disabled>
-                        <i class="fas fa-arrow-down"></i>
-                        Ниже
-                    </button>
+                    <div class="betting-area">
+                        <input type="number" id="bet-amount" placeholder="Введите сумму ставки" min="1">
+                        <div class="quick-bets">
+                            <button class="quick-bet" data-amount="10">10</button>
+                            <button class="quick-bet" data-amount="100">100</button>
+                            <button class="quick-bet" data-amount="1000">1000</button>
+                        </div>
+                        <button id="place-bet">Сделать ставку</button>
+                    </div>
+
+                    <div class="game-controls">
+                        <button id="higher" class="game-button" disabled>
+                            <i class="fas fa-arrow-up"></i>
+                            Выше
+                        </button>
+                        <button id="lower" class="game-button" disabled>
+                            <i class="fas fa-arrow-down"></i>
+                            Ниже
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -169,5 +171,6 @@
 
     <script src="js/balance.js"></script>
     <script src="js/higher-lower.js"></script>
+    <script src="js/mobile-menu.js"></script>
 </body>
 </html> 

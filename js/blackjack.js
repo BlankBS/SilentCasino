@@ -246,9 +246,9 @@ document.addEventListener('DOMContentLoaded', () => {
             cardElement.className = 'card';
             
             if (index === 0 && gameInProgress) {
-                cardElement.style.backgroundImage = 'url(assets/cards/back.png)';
+                cardElement.style.backgroundImage = 'url(/assets/cards/back.png)';
             } else {
-                cardElement.style.backgroundImage = `url(assets/cards/${card.suit}_${card.value}.png)`;
+                cardElement.style.backgroundImage = `url(/assets/cards/${card.suit}_${card.value}.png)`;
             }
             
             dealerCardsElement.appendChild(cardElement);
@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
         playerHand.forEach(card => {
             const cardElement = document.createElement('div');
             cardElement.className = 'card';
-            cardElement.style.backgroundImage = `url(assets/cards/${card.suit}_${card.value}.png)`;
+            cardElement.style.backgroundImage = `url(/assets/cards/${card.suit}_${card.value}.png)`;
             playerCardsElement.appendChild(cardElement);
         });
 
